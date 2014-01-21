@@ -36,23 +36,26 @@ END_LEGAL */
 #include "pin.H"
 
 ofstream OutFile;
-int opCount[1200];
+int opCount[1200] = {0};
 
 // The running count of instructions is kept here
 // make it static to help the compiler optimize docount
 static UINT64 icount = 0;
 
 // This function is called before every instruction is executed
-VOID docount() { icount++; }
+VOID docount(int op)
+{
+	icount++;
+	opCount[op]++;
+	//cout << "COUNT: " << icount << " op: " << op << endl;
+	//cout << "OPCODE: " << op << " , " << OPCODE_StringShort(op) << endl;
+}
 
 // Pin calls this function every time a new instruction is encountered
 VOID Instruction(INS ins, VOID *v)
 {
     // Insert a call to docount before every instruction, no arguments are passed
-    INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)docount, IARG_END);
-    OPCODE op = INS_Opcode(ins);
-    opCount[op]++;
-    //cout << "OPCODE: " << op << " , " << OPCODE_StringShort(op) << endl;
+    INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)docount, IARG_UINT32, INS_Opcode(ins), IARG_END);
 }
 
 KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool",
@@ -67,8 +70,9 @@ VOID Fini(INT32 code, VOID *v)
         if(opCount[i] != 0)
         {
             OutFile << OPCODE_StringShort(i) << ": " << opCount[i] << endl;
-            total += opCount[i];
         }
+        total += opCount[i];
+
     }
     // Write to a file since cout and cerr maybe closed by the application
     OutFile.setf(ios::showbase);
