@@ -31,13 +31,18 @@ END_LEGAL */
 #include <iostream>
 #include <fstream>
 #include <stdio.h>
+#include <string.h>
+#include <time.h>
 
+#include "XML/datastructs.h"
+#include "XML/xmlwriter.h"
 #include "xed-interface.h"
 #include "pin.H"
 
 ofstream OutFile;
 int opCount[1200] = {0};
-
+clock_t calltime;
+clock_t start;
 // The running count of instructions is kept here
 // make it static to help the compiler optimize docount
 static UINT64 icount = 0;
@@ -45,6 +50,8 @@ static UINT64 icount = 0;
 // This function is called before every instruction is executed
 VOID docount(int op)
 {
+	calltime = clock() - start;
+	OutFile << calltime*1000/CLOCKS_PER_SEC << endl;
 	icount++;
 	opCount[op]++;
 	//cout << "COUNT: " << icount << " op: " << op << endl;
@@ -64,21 +71,34 @@ KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool",
 // This function is called when the application exits
 VOID Fini(INT32 code, VOID *v)
 {
-    long total = 0;
-    for (int i = 0; i < 1200; ++i)
-    {
-        if(opCount[i] != 0)
-        {
-            OutFile << OPCODE_StringShort(i) << ": " << opCount[i] << endl;
-        }
-        total += opCount[i];
+	long total = 0;
+	request *rq = new request;
+	XMLWriter *writer = new XMLWriter("output.xml");
 
-    }
-    // Write to a file since cout and cerr maybe closed by the application
-    OutFile.setf(ios::showbase);
-    OutFile << "Count " << icount << endl;
-    OutFile << "Our Count: " << total << endl;
-    OutFile.close();
+	if (writer->valid() != 0) {
+		std::cerr << "Error opening file!" << std::endl;
+	}
+
+	rq->type = 'o';
+	rq->data.op.name = strdup(OPCODE_StringShort(322).c_str());
+	rq->data.op.total = 23423;
+
+	writer->write_request(rq);
+
+	for (int i = 0; i < 1200; ++i)
+	{
+		if(opCount[i] != 0)
+		{
+			OutFile << OPCODE_StringShort(i) << ": " << opCount[i] << endl;
+		}
+		total += opCount[i];
+
+	}
+	// Write to a file since cout and cerr maybe closed by the application
+	OutFile.setf(ios::showbase);
+	OutFile << "Count " << icount << endl;
+	OutFile << "Our Count: " << total << endl;
+	OutFile.close();
 }
 
 /* ===================================================================== */
@@ -100,19 +120,23 @@ INT32 Usage()
 
 int main(int argc, char * argv[])
 {
-    // Initialize pin
-    if (PIN_Init(argc, argv)) return Usage();
 
-    OutFile.open(KnobOutputFile.Value().c_str());
+	// Initialize pin
+	if (PIN_Init(argc, argv)) return Usage();
 
-    // Register Instruction to be called to instrument instructions
-    INS_AddInstrumentFunction(Instruction, 0);
+	OutFile.open(KnobOutputFile.Value().c_str());
 
-    // Register Fini to be called when the application exits
-    PIN_AddFiniFunction(Fini, 0);
+	// Register Instruction to be called to instrument instructions
+	INS_AddInstrumentFunction(Instruction, 0);
 
-    // Start the program, never returns
-    PIN_StartProgram();
+	// Register Fini to be called when the application exits
+	PIN_AddFiniFunction(Fini, 0);
+	start = clock();
 
-    return 0;
+	OutFile << "Start time: " << start << endl;
+
+	// Start the program, never returns
+	PIN_StartProgram();
+
+	return 0;
 }

@@ -17,11 +17,17 @@ struct raminfo {
 	char *size;
 };
 
+struct opinfo {
+	char *name;
+	int total;
+};
+
 /* Switch/case the type here to handle each type of data */
 struct request {
 	union {
 		struct cpuinfo cpu;
 		struct raminfo ram;
+		struct opinfo op;
 	} data;
 	unsigned char type;
 };

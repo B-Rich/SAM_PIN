@@ -20,6 +20,13 @@ static void write_ram(ofstream *output, request *rq)
 	<< "</RAM>" << endl;
 }
 
+static void write_instruction(ofstream *output, request *rq)
+{
+	*output << "<Instructions>\n" \
+	<< "\t<instruction name=\"" << rq->data.op.name <<"\" total=\"" \
+	<< rq->data.op.total << "\"></instruction>" <<endl;
+}
+
 XMLWriter::~XMLWriter(void)
 {
 	this->datafile.close();
@@ -56,6 +63,9 @@ void XMLWriter::write_request(request *rq)
 	break;
 	case 'r':
 		write_ram(&this->datafile, rq);
+	break;
+	case 'o':
+		write_instruction(&this->datafile, rq);
 	break;
 	default:
 		cerr << "Cannot read request type: " << rq->type <<endl;
