@@ -36,6 +36,7 @@ END_LEGAL */
 #include "pin.H"
 
 ofstream OutFile;
+int opCount[1200];
 
 // The running count of instructions is kept here
 // make it static to help the compiler optimize docount
@@ -50,8 +51,8 @@ VOID Instruction(INS ins, VOID *v)
     // Insert a call to docount before every instruction, no arguments are passed
     INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)docount, IARG_END);
     OPCODE op = INS_Opcode(ins);
-    cout << "OPCODE: " << OPCODE_StringShort(op) << endl;
-    cout << INS_Disassemble(ins) << endl;
+    opCount[op]++;
+    //cout << "OPCODE: " << op << " , " << OPCODE_StringShort(op) << endl;
 }
 
 KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool",
@@ -60,9 +61,19 @@ KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool",
 // This function is called when the application exits
 VOID Fini(INT32 code, VOID *v)
 {
+    long total = 0;
+    for (int i = 0; i < 1200; ++i)
+    {
+        if(opCount[i] != 0)
+        {
+            OutFile << OPCODE_StringShort(i) << ": " << opCount[i] << endl;
+            total += opCount[i];
+        }
+    }
     // Write to a file since cout and cerr maybe closed by the application
     OutFile.setf(ios::showbase);
     OutFile << "Count " << icount << endl;
+    OutFile << "Our Count: " << total << endl;
     OutFile.close();
 }
 
@@ -72,7 +83,7 @@ VOID Fini(INT32 code, VOID *v)
 
 INT32 Usage()
 {
-    cerr << "This tool counts the number of dynamic instructions executed" << endl;
+    cerr << "This tool counts the number olsf dynamic instructions executed" << endl;
     cerr << endl << KNOB_BASE::StringKnobSummary() << endl;
     return -1;
 }
