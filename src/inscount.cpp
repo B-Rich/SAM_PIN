@@ -39,10 +39,21 @@ END_LEGAL */
 #include "xed-interface.h"
 #include "pin.H"
 
+// Struct for our instruction calls
+struct Instruc
+{
+    int opcode;
+    clock_t call_time;
+};
+
+// Main struction for instructions
+vector<struct Instruc> list;
+
 ofstream OutFile;
 int opCount[1200] = {0};
 clock_t calltime;
 clock_t start;
+
 // The running count of instructions is kept here
 // make it static to help the compiler optimize docount
 static UINT64 icount = 0;
@@ -50,12 +61,19 @@ static UINT64 icount = 0;
 // This function is called before every instruction is executed
 VOID docount(int op)
 {
-	calltime = clock() - start;
-	OutFile << calltime*1000/CLOCKS_PER_SEC << endl;
-	icount++;
-	opCount[op]++;
-	//cout << "COUNT: " << icount << " op: " << op << endl;
-	//cout << "OPCODE: " << op << " , " << OPCODE_StringShort(op) << endl;
+    calltime = clock() - start;
+    //OutFile << calltime*1000/CLOCKS_PER_SEC << endl;
+    icount++;
+    //opCount[op]++;
+
+    Instruc x;
+    x.opcode = op;
+    x.call_time = calltime;
+    list.insert(list.end(),x);
+
+
+    //cout << "COUNT: " << icount << " op: " << op << endl;
+    //cout << "OPCODE: " << op << " , " << OPCODE_StringShort(op) << endl;
 }
 
 // Pin calls this function every time a new instruction is encountered
@@ -71,34 +89,42 @@ KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool",
 // This function is called when the application exits
 VOID Fini(INT32 code, VOID *v)
 {
-	long total = 0;
-	request *rq = new request;
-	XMLWriter *writer = new XMLWriter("output.xml");
+    long total = 0;
+    request *rq = new request;
+    XMLWriter *writer = new XMLWriter("output.xml");
 
-	if (writer->valid() != 0) {
-		std::cerr << "Error opening file!" << std::endl;
-	}
+    if (writer->valid() != 0) {
+        std::cerr << "Error opening file!" << std::endl;
+    }
 
-	rq->type = 'o';
-	rq->data.op.name = strdup(OPCODE_StringShort(322).c_str());
-	rq->data.op.total = 23423;
+    rq->type = 'o';
+    rq->data.op.name = strdup(OPCODE_StringShort(322).c_str());
+    rq->data.op.total = 23423;
 
-	writer->write_request(rq);
+    writer->write_request(rq);
 
-	for (int i = 0; i < 1200; ++i)
-	{
-		if(opCount[i] != 0)
-		{
-			OutFile << OPCODE_StringShort(i) << ": " << opCount[i] << endl;
-		}
-		total += opCount[i];
+    for (int i = 0; i < 1200; ++i)
+    {
+        if(opCount[i] != 0)
+        {
+            OutFile << OPCODE_StringShort(i) << ": " << opCount[i] << endl;
+        }
+        total += opCount[i];
 
-	}
-	// Write to a file since cout and cerr maybe closed by the application
-	OutFile.setf(ios::showbase);
-	OutFile << "Count " << icount << endl;
-	OutFile << "Our Count: " << total << endl;
-	OutFile.close();
+    }
+
+    Instruc x;
+    for(unsigned int ii=0; ii < list.size(); ii++)
+    {
+        x = list[ii];
+        OutFile << OPCODE_StringShort(x.opcode) << ": " << x.call_time << endl;
+    }
+
+    // Write to a file since cout and cerr maybe closed by the application
+    OutFile.setf(ios::showbase);
+    OutFile << "Count " << icount << endl;
+    OutFile << "Our Count: " << total << endl;
+    OutFile.close();
 }
 
 /* ===================================================================== */
@@ -121,22 +147,22 @@ INT32 Usage()
 int main(int argc, char * argv[])
 {
 
-	// Initialize pin
-	if (PIN_Init(argc, argv)) return Usage();
+    // Initialize pin
+    if (PIN_Init(argc, argv)) return Usage();
 
-	OutFile.open(KnobOutputFile.Value().c_str());
+    OutFile.open(KnobOutputFile.Value().c_str());
 
-	// Register Instruction to be called to instrument instructions
-	INS_AddInstrumentFunction(Instruction, 0);
+    // Register Instruction to be called to instrument instructions
+    INS_AddInstrumentFunction(Instruction, 0);
 
-	// Register Fini to be called when the application exits
-	PIN_AddFiniFunction(Fini, 0);
-	start = clock();
+    // Register Fini to be called when the application exits
+    PIN_AddFiniFunction(Fini, 0);
+    start = clock();
 
-	OutFile << "Start time: " << start << endl;
+    OutFile << "Start time: " << start << endl;
 
-	// Start the program, never returns
-	PIN_StartProgram();
+    // Start the program, never returns
+    PIN_StartProgram();
 
-	return 0;
+    return 0;
 }
