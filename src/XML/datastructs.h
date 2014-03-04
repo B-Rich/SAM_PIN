@@ -22,6 +22,14 @@ struct opinfo {
 	int total;
 };
 
+// Struct for our instruction calls
+struct opTime
+{
+    int opcode;
+    clock_t call_time;
+};
+
+
 /* Switch/case the type here to handle each type of data */
 struct request {
 	union {
