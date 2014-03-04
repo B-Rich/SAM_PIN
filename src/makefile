@@ -20,3 +20,6 @@ all: inscount.cpp XML/xmlwriter.cpp
 	-L$(PIN_USER)//intel64/runtime/glibc \
 	-L$(PIN_USER)//extras/xed2-intel64/lib \
 	-lpin -lxed -ldwarf -lelf -ldl
+
+clean:
+	rm *.o XML/*.o *.out obj-intel64/* *.log
