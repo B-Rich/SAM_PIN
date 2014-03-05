@@ -39,15 +39,8 @@ END_LEGAL */
 #include "xed-interface.h"
 #include "pin.H"
 
-// Struct for our instruction calls
-struct Instruc
-{
-    int opcode;
-    clock_t call_time;
-};
-
 // Main struction for instructions
-vector<struct Instruc> list;
+vector<struct opTime> list;
 
 ofstream OutFile;
 int opCount[1200] = {0};
@@ -66,7 +59,7 @@ VOID docount(int op)
     icount++;
     //opCount[op]++;
 
-    Instruc x;
+    opTime x;
     x.opcode = op;
     x.call_time = calltime;
     list.insert(list.end(),x);
@@ -113,7 +106,7 @@ VOID Fini(INT32 code, VOID *v)
 
     }
 
-    Instruc x;
+    opTime x;
     for(unsigned int ii=0; ii < list.size(); ii++)
     {
         x = list[ii];
