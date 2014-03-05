@@ -20,10 +20,15 @@ static void write_ram(ofstream *output, request *rq)
 	<< "</RAM>" << endl;
 }
 
+void XMLWriter::write_tag(const std::string tag) {
+	
+	this->datafile << "<" << tag << ">" << endl;
+
+}
+
 static void write_instruction(ofstream *output, request *rq)
 {
-	*output << "<Instructions>\n" \
-	<< "\t<instruction name=\"" << rq->data.op.name <<"\" total=\"" \
+	*output << "\t<instruction name=\"" << rq->data.op.name <<"\" total=\"" \
 	<< rq->data.op.total << "\"></instruction>" <<endl;
 }
 

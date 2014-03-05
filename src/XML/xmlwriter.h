@@ -14,6 +14,7 @@ public:
 
 	void create_file(const char *filename);
 	void write_request(request *rq);
+	void write_tag(const std::string tag);
 
 	bool valid(void);
 private:

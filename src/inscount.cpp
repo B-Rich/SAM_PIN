@@ -57,7 +57,7 @@ VOID docount(int op)
     calltime = clock() - start;
     //OutFile << calltime*1000/CLOCKS_PER_SEC << endl;
     icount++;
-    //opCount[op]++;
+    opCount[op]++;
 
     opTime x;
     x.opcode = op;
@@ -83,6 +83,7 @@ KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool",
 VOID Fini(INT32 code, VOID *v)
 {
     long total = 0;
+    vector<struct opTime>::iterator iter;
     request *rq = new request;
     XMLWriter *writer = new XMLWriter("output.xml");
 
@@ -90,12 +91,20 @@ VOID Fini(INT32 code, VOID *v)
         std::cerr << "Error opening file!" << std::endl;
     }
 
-    rq->type = 'o';
-    rq->data.op.name = strdup(OPCODE_StringShort(322).c_str());
-    rq->data.op.total = 23423;
+    writer->write_tag("Instruction");
 
-    writer->write_request(rq);
+    for (iter = list.begin(); iter != list.end(); ++iter) {
+        rq->type = 'o';
+        rq->data.op.name = strdup(OPCODE_StringShort((*iter).opcode).c_str());
+        rq->data.op.total = opCount[(*iter).opcode];
 
+        writer->write_request(rq);
+    }
+    writer->write_tag("/Instruction");
+
+
+
+    /*
     for (int i = 0; i < 1200; ++i)
     {
         if(opCount[i] != 0)
@@ -104,14 +113,14 @@ VOID Fini(INT32 code, VOID *v)
         }
         total += opCount[i];
 
-    }
+    } 
 
     opTime x;
     for(unsigned int ii=0; ii < list.size(); ii++)
     {
         x = list[ii];
         OutFile << OPCODE_StringShort(x.opcode) << ": " << x.call_time << endl;
-    }
+    } */
 
     // Write to a file since cout and cerr maybe closed by the application
     OutFile.setf(ios::showbase);
