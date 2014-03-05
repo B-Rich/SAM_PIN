@@ -3,7 +3,7 @@ SAM_PIN
 
 -- Compile
 
-make obj-intel64/inscount0.so
+make obj-intel64/inscount.so
 
 
 -- Run
