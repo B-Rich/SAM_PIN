@@ -9,7 +9,7 @@ all: inscount.cpp XML/xmlwriter.cpp
 	-I$(PIN_USER)//extras/components/include \
 	-I$(PIN_USER)//extras/xed2-intel64/include \
 	-I$(PIN_USER)//source/tools/InstLib \
-	-O3 -fomit-frame-pointer -fno-strict-aliasing -c inscount.cpp -o obj-intel64/inscount.o
+	-O3 -fomit-frame-pointer -fno-strict-aliasing -c inscount.cpp -o obj-intel64/inscount.o -std=c++11
 
 	g++ -c -Wall -fPIC XML/xmlwriter.cpp
 
@@ -19,7 +19,7 @@ all: inscount.cpp XML/xmlwriter.cpp
 	-L$(PIN_USER)//intel64/lib-ext \
 	-L$(PIN_USER)//intel64/runtime/glibc \
 	-L$(PIN_USER)//extras/xed2-intel64/lib \
-	-lpin -lxed -ldwarf -lelf -ldl
+	-lpin -lxed -ldwarf -lelf -ldl -std=c++11
 
 clean:
 	rm *.o XML/*.o *.out obj-intel64/* *.log

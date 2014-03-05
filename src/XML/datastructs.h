@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 
 /* Structs for the different data we need to capture */
 struct cpuinfo {
@@ -20,13 +21,14 @@ struct raminfo {
 struct opinfo {
 	char *name;
 	int total;
+	std::vector<clock_t> *call_times;
 };
 
 // Struct for our instruction calls
-struct opTime
+struct Instruction
 {
-    int opcode;
-    clock_t call_time;
+    int total = 0;
+    std::vector<clock_t> call_times;
 };
 
 

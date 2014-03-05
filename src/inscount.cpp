@@ -39,31 +39,24 @@ END_LEGAL */
 #include "xed-interface.h"
 #include "pin.H"
 
-// Main struction for instructions
-vector<struct opTime> list;
-
 ofstream OutFile;
-int opCount[1200] = {0};
+struct Instruction opCount[1200];
+
 clock_t calltime;
 clock_t start;
 
 // The running count of instructions is kept here
 // make it static to help the compiler optimize docount
-static UINT64 icount = 0;
+//static UINT64 icount = 0;
 
 // This function is called before every instruction is executed
 VOID docount(int op)
 {
     calltime = clock() - start;
     //OutFile << calltime*1000/CLOCKS_PER_SEC << endl;
-    icount++;
-    opCount[op]++;
-
-    opTime x;
-    x.opcode = op;
-    x.call_time = calltime;
-    list.insert(list.end(),x);
-
+    //icount++;
+    opCount[op].total++;
+    opCount[op].call_times.push_back(calltime);
 
     //cout << "COUNT: " << icount << " op: " << op << endl;
     //cout << "OPCODE: " << op << " , " << OPCODE_StringShort(op) << endl;
@@ -83,7 +76,7 @@ KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool",
 VOID Fini(INT32 code, VOID *v)
 {
     long total = 0;
-    vector<struct opTime>::iterator iter;
+    
     request *rq = new request;
     XMLWriter *writer = new XMLWriter("output.xml");
 
@@ -93,13 +86,22 @@ VOID Fini(INT32 code, VOID *v)
 
     writer->write_tag("Instruction");
 
-    for (iter = list.begin(); iter != list.end(); ++iter) {
+    for(int i = 0; i < 1200; ++i) {
+        if(opCount[i].total == 0)
+            continue;
+        
         rq->type = 'o';
-        rq->data.op.name = strdup(OPCODE_StringShort((*iter).opcode).c_str());
-        rq->data.op.total = opCount[(*iter).opcode];
+        rq->data.op.name = strdup(OPCODE_StringShort(i).c_str());
+        rq->data.op.total = opCount[i].total;
+        rq->data.op.call_times = &opCount[i].call_times;
 
         writer->write_request(rq);
+
+
     }
+
+    //for (iter = list.begin(); iter != list.end(); ++iter) 
+
     writer->write_tag("/Instruction");
 
 
@@ -124,7 +126,7 @@ VOID Fini(INT32 code, VOID *v)
 
     // Write to a file since cout and cerr maybe closed by the application
     OutFile.setf(ios::showbase);
-    OutFile << "Count " << icount << endl;
+    //OutFile << "Count " << icount << endl;
     OutFile << "Our Count: " << total << endl;
     OutFile.close();
 }
