@@ -1,4 +1,4 @@
-PIN_USER = /home/ben/bin/pin-2.13-62732-gcc.4.4.7-linux
+PIN_USER = $(PIN_ROOT)
 
 
 all: inscount.cpp XML/xmlwriter.cpp
