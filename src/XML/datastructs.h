@@ -22,6 +22,7 @@ struct opinfo {
 	char *name;
 	int total;
 	std::vector<clock_t> *call_times;
+	char *binned_times;
 };
 
 // Struct for our instruction calls

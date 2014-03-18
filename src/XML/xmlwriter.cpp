@@ -29,7 +29,7 @@ void XMLWriter::write_tag(const std::string tag) {
 static void write_instruction(ofstream *output, request *rq)
 {
 	*output << "\t<instruction name=\"" << rq->data.op.name <<"\" total=\"" \
-	<< rq->data.op.total << "\">";
+	<< rq->data.op.total << "\">" << rq->data.op.binned_times;
 	
 	// here we need to do times in bins
 

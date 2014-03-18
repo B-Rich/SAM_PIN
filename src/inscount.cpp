@@ -44,6 +44,7 @@ struct Instruction opCount[1200];
 
 clock_t calltime;
 clock_t start;
+double total_elapsed;
 
 // The running count of instructions is kept here
 // make it static to help the compiler optimize docount
@@ -75,7 +76,10 @@ KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool",
 // This function is called when the application exits
 VOID Fini(INT32 code, VOID *v)
 {
+    total_elapsed = (double)(clock() - start) / CLOCKS_PER_SEC;
+
     long total = 0;
+    std::string final = " ";
     
     request *rq = new request;
     XMLWriter *writer = new XMLWriter("output.xml");
@@ -85,6 +89,8 @@ VOID Fini(INT32 code, VOID *v)
     }
 
     writer->write_tag("Instruction");
+    
+    final = "test";
 
     for(int i = 0; i < 1200; ++i) {
         if(opCount[i].total == 0)
@@ -94,6 +100,7 @@ VOID Fini(INT32 code, VOID *v)
         rq->data.op.name = strdup(OPCODE_StringShort(i).c_str());
         rq->data.op.total = opCount[i].total;
         rq->data.op.call_times = &opCount[i].call_times;
+        rq->data.op.binned_times = strdup(final.c_str());
 
         writer->write_request(rq);
 
@@ -161,6 +168,7 @@ int main(int argc, char * argv[])
 
     // Register Fini to be called when the application exits
     PIN_AddFiniFunction(Fini, 0);
+
     start = clock();
 
     OutFile << "Start time: " << start << endl;
