@@ -1,4 +1,5 @@
 <Instruction>
+<<<<<<< Updated upstream
 	<instruction name="ADD" total="36790"> 432 35870 29233 17759 17055 8206 7466 3588 1769 0 </instruction>
 	<instruction name="AND" total="12559">46 12414 11488 6993 6751 2113 1686 983 435 0 </instruction>
 	<instruction name="BSF" total="262">0 258 238 238 237 236 192 48 0 0 </instruction>
@@ -86,4 +87,92 @@
 	<instruction name="XCHG" total="36">0 36 36 36 16 16 13 0 0 0 </instruction>
 	<instruction name="XGETBV" total="2">0 2 2 1 0 0 0 0 0 0 </instruction>
 	<instruction name="XOR" total="4781">38 4658 4039 2245 2025 1903 1700 1310 588 0 </instruction>
+=======
+	<instruction name="ADD" total="29271">test</instruction>
+	<instruction name="AND" total="6061">test</instruction>
+	<instruction name="BSF" total="217">test</instruction>
+	<instruction name="BSR" total="3">test</instruction>
+	<instruction name="BT" total="146">test</instruction>
+	<instruction name="CALL_NEAR" total="2839">test</instruction>
+	<instruction name="CDQE" total="19">test</instruction>
+	<instruction name="CMOVB" total="585">test</instruction>
+	<instruction name="CMOVBE" total="26">test</instruction>
+	<instruction name="CMOVL" total="1">test</instruction>
+	<instruction name="CMOVNB" total="64">test</instruction>
+	<instruction name="CMOVNBE" total="16">test</instruction>
+	<instruction name="CMOVNL" total="1">test</instruction>
+	<instruction name="CMOVNZ" total="66">test</instruction>
+	<instruction name="CMOVZ" total="192">test</instruction>
+	<instruction name="CMP" total="31940">test</instruction>
+	<instruction name="CMPXCHG" total="72">test</instruction>
+	<instruction name="CPUID" total="16">test</instruction>
+	<instruction name="CQO" total="1">test</instruction>
+	<instruction name="DEC" total="123">test</instruction>
+	<instruction name="DIV" total="294">test</instruction>
+	<instruction name="IDIV" total="1">test</instruction>
+	<instruction name="IMUL" total="102">test</instruction>
+	<instruction name="INC" total="6986">test</instruction>
+	<instruction name="JB" total="2650">test</instruction>
+	<instruction name="JBE" total="1822">test</instruction>
+	<instruction name="JL" total="180">test</instruction>
+	<instruction name="JLE" total="421">test</instruction>
+	<instruction name="JMP" total="3820">test</instruction>
+	<instruction name="JNB" total="1844">test</instruction>
+	<instruction name="JNBE" total="4900">test</instruction>
+	<instruction name="JNL" total="22">test</instruction>
+	<instruction name="JNLE" total="263">test</instruction>
+	<instruction name="JNS" total="85">test</instruction>
+	<instruction name="JNZ" total="25915">test</instruction>
+	<instruction name="JS" total="45">test</instruction>
+	<instruction name="JZ" total="23457">test</instruction>
+	<instruction name="LEA" total="12765">test</instruction>
+	<instruction name="LEAVE" total="3">test</instruction>
+	<instruction name="MOV" total="87064">test</instruction>
+	<instruction name="MOVD" total="18">test</instruction>
+	<instruction name="MOVDQA" total="50">test</instruction>
+	<instruction name="MOVDQU" total="156">test</instruction>
+	<instruction name="MOVHPD" total="150">test</instruction>
+	<instruction name="MOVLPD" total="150">test</instruction>
+	<instruction name="MOVSX" total="522">test</instruction>
+	<instruction name="MOVSXD" total="908">test</instruction>
+	<instruction name="MOVZX" total="9934">test</instruction>
+	<instruction name="MUL" total="7">test</instruction>
+	<instruction name="NEG" total="124">test</instruction>
+	<instruction name="NOP" total="933">test</instruction>
+	<instruction name="NOT" total="17">test</instruction>
+	<instruction name="OR" total="595">test</instruction>
+	<instruction name="PCMPEQB" total="342">test</instruction>
+	<instruction name="PMOVMSKB" total="235">test</instruction>
+	<instruction name="POP" total="6228">test</instruction>
+	<instruction name="POR" total="26">test</instruction>
+	<instruction name="PSHUFD" total="18">test</instruction>
+	<instruction name="PSLLDQ" total="7">test</instruction>
+	<instruction name="PSRLDQ" total="1">test</instruction>
+	<instruction name="PSUBB" total="82">test</instruction>
+	<instruction name="PUNPCKLBW" total="18">test</instruction>
+	<instruction name="PUNPCKLWD" total="18">test</instruction>
+	<instruction name="PUSH" total="6312">test</instruction>
+	<instruction name="PXOR" total="584">test</instruction>
+	<instruction name="RDTSC" total="19">test</instruction>
+	<instruction name="RET_NEAR" total="2834">test</instruction>
+	<instruction name="ROL" total="37">test</instruction>
+	<instruction name="ROR" total="12">test</instruction>
+	<instruction name="SAR" total="269">test</instruction>
+	<instruction name="SBB" total="8">test</instruction>
+	<instruction name="SETB" total="29">test</instruction>
+	<instruction name="SETBE" total="122">test</instruction>
+	<instruction name="SETNBE" total="43">test</instruction>
+	<instruction name="SETNZ" total="799">test</instruction>
+	<instruction name="SETZ" total="572">test</instruction>
+	<instruction name="SHL" total="2358">test</instruction>
+	<instruction name="SHR" total="3372">test</instruction>
+	<instruction name="STOSB" total="2508">test</instruction>
+	<instruction name="STOSQ" total="686">test</instruction>
+	<instruction name="SUB" total="2983">test</instruction>
+	<instruction name="SYSCALL" total="66">test</instruction>
+	<instruction name="TEST" total="29671">test</instruction>
+	<instruction name="XCHG" total="29">test</instruction>
+	<instruction name="XGETBV" total="1">test</instruction>
+	<instruction name="XOR" total="3011">test</instruction>
+>>>>>>> Stashed changes
 </Instruction>
