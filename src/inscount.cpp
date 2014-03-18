@@ -74,11 +74,21 @@ KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool",
 
 VOID ImageLoad(IMG img, void *v)
 {
+    fstream output;
+    output.open("output.xml", std::fstream::out);
+
     for( SYM sym = IMG_RegsymHead(img); SYM_Valid(sym); sym = SYM_Next(sym) )
     {
         string symPureName =  PIN_UndecorateSymbolName(SYM_Name(sym), UNDECORATION_NAME_ONLY);
-        cout << symPureName << endl;
+        if (SYM_Valid(sym)) {
+            output << "<Function=\"" << symPureName << "\">\n" \
+            << "\t<SymIndex>" << SYM_Index(sym) << "</SymIndex>\n" \
+            << "\t<SymAddress>" << SYM_Value(sym) << "</SymAddress>\n" \
+            << "</Function>" << endl;
+        }
     }
+
+    output.close();
 }
 
 // This function is called when the application exits

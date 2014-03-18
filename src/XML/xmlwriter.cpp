@@ -44,7 +44,7 @@ XMLWriter::~XMLWriter(void)
 
 XMLWriter::XMLWriter(const char *filename)
 {
-	this->datafile.open(filename);
+	this->datafile.open(filename, std::fstream::app);
 
 	if (this->datafile.fail()) {
 		cerr << "Could not create file: " << filename << endl;
