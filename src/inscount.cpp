@@ -46,21 +46,13 @@ clock_t calltime;
 clock_t start;
 double total_elapsed;
 
-// The running count of instructions is kept here
-// make it static to help the compiler optimize docount
-//static UINT64 icount = 0;
-
 // This function is called before every instruction is executed
 VOID docount(int op)
 {
     calltime = clock() - start;
-    //OutFile << calltime*1000/CLOCKS_PER_SEC << endl;
-    //icount++;
+
     opCount[op].total++;
     opCount[op].call_times.push_back(calltime);
-
-    //cout << "COUNT: " << icount << " op: " << op << endl;
-    //cout << "OPCODE: " << op << " , " << OPCODE_StringShort(op) << endl;
 }
 
 // Pin calls this function every time a new instruction is encountered
@@ -134,6 +126,7 @@ VOID Fini(INT32 code, VOID *v)
             }
         }
 
+        // Setup the write request for XML writer
         rq->type = 'o';
         rq->data.op.name = strdup(OPCODE_StringShort(x).c_str());
         rq->data.op.total = opCount[x].total;
@@ -148,33 +141,9 @@ VOID Fini(INT32 code, VOID *v)
     }
 
     writer->write_tag("/Instruction");
- 
-
-    
-
-
-
-    /*
-    for (int i = 0; i < 1200; ++i)
-    {
-        if(opCount[i] != 0)
-        {
-            OutFile << OPCODE_StringShort(i) << ": " << opCount[i] << endl;
-        }
-        total += opCount[i];
-
-    } 
-
-    opTime x;
-    for(unsigned int ii=0; ii < list.size(); ii++)
-    {
-        x = list[ii];
-        OutFile << OPCODE_StringShort(x.opcode) << ": " << x.call_time << endl;
-    } */
 
     // Write to a file since cout and cerr maybe closed by the application
     OutFile.setf(ios::showbase);
-    //OutFile << "Count " << icount << endl;
     OutFile << "Our Count: " << total << endl;
     OutFile.close();
 }
