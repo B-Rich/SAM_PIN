@@ -104,23 +104,23 @@ VOID Fini(INT32 code, VOID *v)
             temp = (double)(*iter)/CLOCKS_PER_SEC;
             if(temp < bin_amount)
                 bins[0]++;
-            if(temp >= bin_amount && temp > (bin_amount*2))
+            if(temp >= bin_amount && temp < (bin_amount*2))
                 bins[1]++;
-            if(temp >= (bin_amount*2) && temp > (bin_amount*3))
+            if(temp >= (bin_amount*2) && temp < (bin_amount*3))
                 bins[2]++;
-            if(temp >= (bin_amount*3) && temp > (bin_amount*4))
+            if(temp >= (bin_amount*3) && temp < (bin_amount*4))
                 bins[3]++;
-            if(temp >= (bin_amount*4) && temp > (bin_amount*5))
+            if(temp >= (bin_amount*4) && temp < (bin_amount*5))
                 bins[4]++;
-            if(temp >= (bin_amount*5) && temp > (bin_amount*6))
+            if(temp >= (bin_amount*5) && temp < (bin_amount*6))
                 bins[5]++;
-            if(temp >= (bin_amount*6) && temp > (bin_amount*7))
+            if(temp >= (bin_amount*6) && temp < (bin_amount*7))
                 bins[6]++;
-            if(temp >= (bin_amount*7) && temp > (bin_amount*8))
+            if(temp >= (bin_amount*7) && temp < (bin_amount*8))
                 bins[7]++;
-            if(temp >= (bin_amount*8) && temp > (bin_amount*9))
+            if(temp >= (bin_amount*8) && temp < (bin_amount*9))
                 bins[8]++;
-            if(temp >= (bin_amount*9) && temp > (bin_amount*10))
+            if(temp >= (bin_amount*9) && temp < (bin_amount*10))
                 bins[9]++;
         }
 
