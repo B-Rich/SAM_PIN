@@ -1,89 +1,89 @@
 <Instruction>
-	<instruction name="ADD" total="36531"></instruction>
-	<instruction name="AND" total="12488"></instruction>
-	<instruction name="BSF" total="252"></instruction>
-	<instruction name="BSR" total="3"></instruction>
-	<instruction name="BT" total="190"></instruction>
-	<instruction name="CALL_NEAR" total="4738"></instruction>
-	<instruction name="CDQE" total="30"></instruction>
-	<instruction name="CMOVB" total="1329"></instruction>
-	<instruction name="CMOVBE" total="33"></instruction>
-	<instruction name="CMOVL" total="1"></instruction>
-	<instruction name="CMOVNB" total="64"></instruction>
-	<instruction name="CMOVNBE" total="12"></instruction>
-	<instruction name="CMOVNL" total="1"></instruction>
-	<instruction name="CMOVNZ" total="88"></instruction>
-	<instruction name="CMOVS" total="1"></instruction>
-	<instruction name="CMOVZ" total="84"></instruction>
-	<instruction name="CMP" total="40823"></instruction>
-	<instruction name="CMPXCHG" total="90"></instruction>
-	<instruction name="CPUID" total="30"></instruction>
-	<instruction name="DEC" total="268"></instruction>
-	<instruction name="DIV" total="350"></instruction>
-	<instruction name="IDIV" total="2"></instruction>
-	<instruction name="IMUL" total="434"></instruction>
-	<instruction name="INC" total="11660"></instruction>
-	<instruction name="JB" total="3113"></instruction>
-	<instruction name="JBE" total="3097"></instruction>
-	<instruction name="JL" total="21"></instruction>
-	<instruction name="JLE" total="348"></instruction>
-	<instruction name="JMP" total="4701"></instruction>
-	<instruction name="JNB" total="1741"></instruction>
-	<instruction name="JNBE" total="5448"></instruction>
-	<instruction name="JNL" total="219"></instruction>
-	<instruction name="JNLE" total="359"></instruction>
-	<instruction name="JNS" total="58"></instruction>
-	<instruction name="JNZ" total="37575"></instruction>
-	<instruction name="JS" total="64"></instruction>
-	<instruction name="JZ" total="31449"></instruction>
-	<instruction name="LDDQU" total="9"></instruction>
-	<instruction name="LEA" total="14900"></instruction>
-	<instruction name="LEAVE" total="58"></instruction>
-	<instruction name="MOV" total="130147"></instruction>
-	<instruction name="MOVD" total="29"></instruction>
-	<instruction name="MOVDQA" total="154"></instruction>
-	<instruction name="MOVDQU" total="191"></instruction>
-	<instruction name="MOVHPD" total="150"></instruction>
-	<instruction name="MOVLPD" total="150"></instruction>
-	<instruction name="MOVQ" total="26"></instruction>
-	<instruction name="MOVSX" total="865"></instruction>
-	<instruction name="MOVSXD" total="1053"></instruction>
-	<instruction name="MOVZX" total="11781"></instruction>
-	<instruction name="MUL" total="10"></instruction>
-	<instruction name="NEG" total="196"></instruction>
-	<instruction name="NOP" total="1166"></instruction>
-	<instruction name="NOT" total="35"></instruction>
-	<instruction name="OR" total="789"></instruction>
-	<instruction name="PCMPEQB" total="414"></instruction>
-	<instruction name="PCMPISTRI" total="32"></instruction>
-	<instruction name="PMOVMSKB" total="332"></instruction>
-	<instruction name="POP" total="7020"></instruction>
-	<instruction name="POR" total="1"></instruction>
-	<instruction name="PSHUFD" total="55"></instruction>
-	<instruction name="PSLLDQ" total="7"></instruction>
-	<instruction name="PSRLDQ" total="2"></instruction>
-	<instruction name="PSUBB" total="82"></instruction>
-	<instruction name="PUNPCKLBW" total="110"></instruction>
-	<instruction name="PUSH" total="7195"></instruction>
-	<instruction name="PXOR" total="265"></instruction>
-	<instruction name="RDTSC" total="19"></instruction>
-	<instruction name="RET_NEAR" total="4733"></instruction>
-	<instruction name="ROL" total="115"></instruction>
-	<instruction name="ROR" total="26"></instruction>
-	<instruction name="SAR" total="379"></instruction>
-	<instruction name="SBB" total="124"></instruction>
-	<instruction name="SETB" total="59"></instruction>
-	<instruction name="SETBE" total="1"></instruction>
-	<instruction name="SETNZ" total="806"></instruction>
-	<instruction name="SETS" total="28"></instruction>
-	<instruction name="SETZ" total="558"></instruction>
-	<instruction name="SHL" total="3402"></instruction>
-	<instruction name="SHR" total="5519"></instruction>
-	<instruction name="STOSQ" total="687"></instruction>
-	<instruction name="SUB" total="4127"></instruction>
-	<instruction name="SYSCALL" total="117"></instruction>
-	<instruction name="TEST" total="38425"></instruction>
-	<instruction name="XCHG" total="36"></instruction>
-	<instruction name="XGETBV" total="2"></instruction>
-	<instruction name="XOR" total="4639"></instruction>
+	<instruction name="ADD" total="36790"> 432 35870 29233 17759 17055 8206 7466 3588 1769 0 </instruction>
+	<instruction name="AND" total="12559">46 12414 11488 6993 6751 2113 1686 983 435 0 </instruction>
+	<instruction name="BSF" total="262">0 258 238 238 237 236 192 48 0 0 </instruction>
+	<instruction name="BSR" total="3">0 3 3 3 0 0 0 0 0 0 </instruction>
+	<instruction name="BT" total="190">0 190 190 55 46 39 33 21 13 0 </instruction>
+	<instruction name="CALL_NEAR" total="4799">37 4646 3510 2284 2003 1841 1578 996 536 0 </instruction>
+	<instruction name="CDQE" total="31">1 28 23 21 21 20 18 2 0 0 </instruction>
+	<instruction name="CMOVB" total="1329">1 1307 764 398 352 304 264 168 104 0 </instruction>
+	<instruction name="CMOVBE" total="38">0 38 37 24 23 23 23 23 7 0 </instruction>
+	<instruction name="CMOVL" total="1">0 1 1 1 1 1 0 0 0 0 </instruction>
+	<instruction name="CMOVNB" total="69">0 69 69 69 68 66 61 27 0 0 </instruction>
+	<instruction name="CMOVNBE" total="12">5 6 0 0 0 0 0 0 0 0 </instruction>
+	<instruction name="CMOVNL" total="1">0 1 1 1 1 1 0 0 0 0 </instruction>
+	<instruction name="CMOVNZ" total="91">2 83 44 42 40 40 38 26 16 0 </instruction>
+	<instruction name="CMOVS" total="1">0 1 1 1 1 1 1 1 1 0 </instruction>
+	<instruction name="CMOVZ" total="84">3 80 70 64 60 48 41 25 15 0 </instruction>
+	<instruction name="CMP" total="41246">422 40044 30884 20202 19205 12394 11390 6118 3106 0 </instruction>
+	<instruction name="CMPXCHG" total="92">0 92 92 92 90 84 77 35 11 0 </instruction>
+	<instruction name="CPUID" total="30">0 30 30 28 0 0 0 0 0 0 </instruction>
+	<instruction name="DEC" total="270">10 212 85 84 83 78 73 33 9 0 </instruction>
+	<instruction name="DIV" total="383">0 383 380 226 216 208 198 183 43 0 </instruction>
+	<instruction name="IDIV" total="2">0 2 2 2 0 0 0 0 0 0 </instruction>
+	<instruction name="IMUL" total="447">3 442 407 273 139 131 123 110 29 0 </instruction>
+	<instruction name="INC" total="11662">23 11542 8722 3368 2866 2458 2094 1358 852 0 </instruction>
+	<instruction name="JB" total="3146">22 3116 3043 3025 2933 717 713 366 192 0 </instruction>
+	<instruction name="JBE" total="3150">78 2892 2192 1397 1391 1387 1336 577 215 0 </instruction>
+	<instruction name="JL" total="24">0 24 24 24 24 24 24 24 14 0 </instruction>
+	<instruction name="JLE" total="352">0 344 324 169 152 140 102 73 38 0 </instruction>
+	<instruction name="JMP" total="4846">84 4690 4211 3472 3369 2377 2102 1457 655 0 </instruction>
+	<instruction name="JNB" total="1773">40 1656 1328 1160 1134 478 434 375 223 0 </instruction>
+	<instruction name="JNBE" total="5482">49 5297 3708 2689 2666 1602 1485 621 208 0 </instruction>
+	<instruction name="JNL" total="222">0 208 170 170 62 59 34 33 20 0 </instruction>
+	<instruction name="JNLE" total="383">1 368 330 316 313 309 249 236 124 0 </instruction>
+	<instruction name="JNS" total="66">0 66 66 57 57 57 57 57 2 0 </instruction>
+	<instruction name="JNZ" total="37735">228 36910 29414 15261 14191 10268 9031 4843 2729 0 </instruction>
+	<instruction name="JS" total="64">1 56 30 28 20 12 11 9 6 0 </instruction>
+	<instruction name="JZ" total="31705">320 31000 26070 15661 14933 8267 7132 3731 1987 0 </instruction>
+	<instruction name="LDDQU" total="9">0 9 9 9 9 9 9 1 0 0 </instruction>
+	<instruction name="LEA" total="15077">166 14362 12156 9870 9540 3920 3540 2116 693 0 </instruction>
+	<instruction name="LEAVE" total="58">0 58 18 18 18 18 18 6 6 0 </instruction>
+	<instruction name="MOV" total="131742">1043 128878 108245 57405 53568 38450 34110 21382 9509 0 </instruction>
+	<instruction name="MOVD" total="29">0 25 5 5 4 4 0 0 0 0 </instruction>
+	<instruction name="MOVDQA" total="154">0 138 66 66 64 63 12 0 0 0 </instruction>
+	<instruction name="MOVDQU" total="201">0 201 201 201 201 198 117 45 0 0 </instruction>
+	<instruction name="MOVHPD" total="150">0 150 150 150 150 150 140 0 0 0 </instruction>
+	<instruction name="MOVLPD" total="150">0 150 150 150 150 150 140 0 0 0 </instruction>
+	<instruction name="MOVQ" total="26">0 26 26 26 26 25 0 0 0 0 </instruction>
+	<instruction name="MOVSX" total="805">0 593 22 19 19 19 9 9 9 0 </instruction>
+	<instruction name="MOVSXD" total="1093">31 1040 975 801 801 799 742 289 3 0 </instruction>
+	<instruction name="MOVZX" total="11913">37 11719 10845 7231 6905 2357 2102 1622 735 0 </instruction>
+	<instruction name="MUL" total="10">2 8 7 0 0 0 0 0 0 0 </instruction>
+	<instruction name="NEG" total="194">22 150 19 10 9 8 5 5 4 0 </instruction>
+	<instruction name="NOP" total="1174">21 1110 928 574 527 485 399 220 128 0 </instruction>
+	<instruction name="NOT" total="35">3 28 11 11 9 8 8 2 2 0 </instruction>
+	<instruction name="OR" total="793">22 724 486 299 177 161 146 45 2 0 </instruction>
+	<instruction name="PCMPEQB" total="424">0 408 336 336 334 333 270 48 0 0 </instruction>
+	<instruction name="PCMPISTRI" total="32">0 32 32 32 32 31 0 0 0 0 </instruction>
+	<instruction name="PMOVMSKB" total="342">0 326 254 254 252 251 195 48 0 0 </instruction>
+	<instruction name="POP" total="7164">46 6990 6052 3748 3387 3168 2785 1805 754 0 </instruction>
+	<instruction name="POR" total="1">0 1 1 1 1 1 1 0 0 0 </instruction>
+	<instruction name="PSHUFD" total="55">0 51 31 31 30 29 0 0 0 0 </instruction>
+	<instruction name="PSLLDQ" total="7">0 7 7 7 7 7 5 0 0 0 </instruction>
+	<instruction name="PSRLDQ" total="2">0 2 2 2 2 2 1 0 0 0 </instruction>
+	<instruction name="PSUBB" total="82">0 82 82 82 82 82 75 0 0 0 </instruction>
+	<instruction name="PUNPCKLBW" total="110">0 102 62 62 60 58 0 0 0 0 </instruction>
+	<instruction name="PUSH" total="7339">70 7133 6151 3858 3496 3261 2860 1857 771 0 </instruction>
+	<instruction name="PXOR" total="275">0 271 251 251 250 250 201 48 0 0 </instruction>
+	<instruction name="RDTSC" total="19">12 6 4 0 0 0 0 0 0 0 </instruction>
+	<instruction name="RET_NEAR" total="4794">33 4648 3511 2286 2002 1841 1579 994 540 0 </instruction>
+	<instruction name="ROL" total="115">0 109 64 64 8 8 4 3 0 0 </instruction>
+	<instruction name="ROR" total="26">0 26 26 26 26 24 11 6 6 0 </instruction>
+	<instruction name="SAR" total="388">2 367 306 160 125 117 99 81 15 0 </instruction>
+	<instruction name="SBB" total="124">3 119 113 113 4 3 3 2 2 0 </instruction>
+	<instruction name="SETB" total="68">0 68 68 68 68 67 38 38 0 0 </instruction>
+	<instruction name="SETBE" total="1">1 0 0 0 0 0 0 0 0 0 </instruction>
+	<instruction name="SETNZ" total="895">1 892 874 859 859 855 853 821 404 0 </instruction>
+	<instruction name="SETS" total="28">0 28 28 28 28 27 0 0 0 0 </instruction>
+	<instruction name="SETZ" total="558">1 556 553 108 99 90 51 25 16 0 </instruction>
+	<instruction name="SHL" total="3408">37 3313 3036 738 612 542 487 279 157 0 </instruction>
+	<instruction name="SHR" total="5536">13 5492 5385 1778 1472 1301 1144 590 287 0 </instruction>
+	<instruction name="STOSQ" total="763">0 763 467 387 387 387 387 387 0 0 </instruction>
+	<instruction name="SUB" total="4218">115 3904 2959 2139 1999 1884 1614 1066 493 0 </instruction>
+	<instruction name="SYSCALL" total="117">3 97 45 29 28 20 13 10 5 0 </instruction>
+	<instruction name="TEST" total="38644">289 37907 32296 17138 16126 10657 9176 5059 2785 0 </instruction>
+	<instruction name="XCHG" total="36">0 36 36 36 16 16 13 0 0 0 </instruction>
+	<instruction name="XGETBV" total="2">0 2 2 1 0 0 0 0 0 0 </instruction>
+	<instruction name="XOR" total="4781">38 4658 4039 2245 2025 1903 1700 1310 588 0 </instruction>
 </Instruction>

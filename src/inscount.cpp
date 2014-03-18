@@ -76,40 +76,81 @@ KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool",
 // This function is called when the application exits
 VOID Fini(INT32 code, VOID *v)
 {
+    // Get total runtime of application
     total_elapsed = (double)(clock() - start) / CLOCKS_PER_SEC;
+    double bin_amount = total_elapsed / 10;
+    double temp;
+    long bins[10] = {0};
 
     long total = 0;
     std::string final = " ";
+    std::vector<clock_t>::iterator iter;
     
     request *rq = new request;
-    XMLWriter *writer = new XMLWriter("output.xml");
 
+    XMLWriter *writer = new XMLWriter("output.xml");
     if (writer->valid() != 0) {
         std::cerr << "Error opening file!" << std::endl;
     }
 
     writer->write_tag("Instruction");
-    
-    final = "test";
-
-    for(int i = 0; i < 1200; ++i) {
-        if(opCount[i].total == 0)
+    // Bin times
+    for (int x = 0; x < 1200; ++x) {
+        if(opCount[x].total == 0)
             continue;
-        
+
+        // Bin it all
+        for (iter = opCount[x].call_times.begin(); iter != opCount[x].call_times.end(); ++iter) {
+            temp = (double)(*iter)/CLOCKS_PER_SEC;
+            if(temp < bin_amount)
+                bins[0]++;
+            if(temp >= bin_amount && temp > (bin_amount*2))
+                bins[1]++;
+            if(temp >= (bin_amount*2) && temp > (bin_amount*3))
+                bins[2]++;
+            if(temp >= (bin_amount*3) && temp > (bin_amount*4))
+                bins[3]++;
+            if(temp >= (bin_amount*4) && temp > (bin_amount*5))
+                bins[4]++;
+            if(temp >= (bin_amount*5) && temp > (bin_amount*6))
+                bins[5]++;
+            if(temp >= (bin_amount*6) && temp > (bin_amount*7))
+                bins[6]++;
+            if(temp >= (bin_amount*7) && temp > (bin_amount*8))
+                bins[7]++;
+            if(temp >= (bin_amount*8) && temp > (bin_amount*9))
+                bins[8]++;
+            if(temp >= (bin_amount*9) && temp > (bin_amount*10))
+                bins[9]++;
+        }
+
+        // Convert to string output
+        for (int z = 0; z < 10; ++z)
+        {
+            if(z == 10) {
+                final += std::to_string(bins[z]);
+            } else {
+                final += std::to_string(bins[z]) + " ";
+            }
+        }
+
         rq->type = 'o';
-        rq->data.op.name = strdup(OPCODE_StringShort(i).c_str());
-        rq->data.op.total = opCount[i].total;
-        rq->data.op.call_times = &opCount[i].call_times;
+        rq->data.op.name = strdup(OPCODE_StringShort(x).c_str());
+        rq->data.op.total = opCount[x].total;
+        rq->data.op.call_times = &opCount[x].call_times;
         rq->data.op.binned_times = strdup(final.c_str());
 
         writer->write_request(rq);
 
-
+        // Reset array
+        memset(bins, 0, sizeof(bins));
+        final = "";
     }
 
-    //for (iter = list.begin(); iter != list.end(); ++iter) 
-
     writer->write_tag("/Instruction");
+ 
+
+    
 
 
 

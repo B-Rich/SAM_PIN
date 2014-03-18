@@ -11,7 +11,7 @@ all: inscount.cpp XML/xmlwriter.cpp
 	-I$(PIN_USER)//source/tools/InstLib \
 	-O3 -fomit-frame-pointer -fno-strict-aliasing -c inscount.cpp -o obj-intel64/inscount.o -std=c++11
 
-	g++ -c -Wall -fPIC XML/xmlwriter.cpp
+	g++ -c -Wall -fPIC XML/xmlwriter.cpp -std=c++11
 
 	g++ -shared -Wl,--hash-style=sysv -Wl,-Bsymbolic -Wl,--version-script=$(PIN_USER)//source/include/pin/pintool.ver \
 	-o obj-intel64/inscount.so obj-intel64/inscount.o xmlwriter.o \
