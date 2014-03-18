@@ -11,3 +11,7 @@
 *.lai
 *.la
 *.a
+
+# XML and output files
+*.xml
+*.log
