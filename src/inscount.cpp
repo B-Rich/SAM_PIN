@@ -129,6 +129,15 @@ VOID Routine(RTN rtn, VOID *v)
     RTN_Close(rtn);
 }
 
+VOID ImageLoad(IMG img, void *v)
+{
+    for( SYM sym = IMG_RegsymHead(img); SYM_Valid(sym); sym = SYM_Next(sym) )
+    {
+        string symPureName =  PIN_UndecorateSymbolName(SYM_Name(sym), UNDECORATION_NAME_ONLY);
+        cout << symPureName << endl;
+    }
+}
+
 // This function is called when the application exits
 VOID Fini(INT32 code, VOID *v)
 {
@@ -241,17 +250,20 @@ INT32 Usage()
 
 int main(int argc, char * argv[])
 {
+    PIN_InitSymbols();
 
     // Initialize pin
     if (PIN_Init(argc, argv)) return Usage();
 
     OutFile.open(KnobOutputFile.Value().c_str());
 
+    IMG_AddInstrumentFunction(ImageLoad, 0);
+
     // Register Instruction to be called to instrument instructions
     INS_AddInstrumentFunction(Instruction, 0);
 
     /* Segfaults on this... */
-    RTN_AddInstrumentFunction(Routine, 0);
+   // RTN_AddInstrumentFunction(Routine, 0);
     
     // Register Fini to be called when the application exits
     PIN_AddFiniFunction(Fini, 0);
