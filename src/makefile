@@ -21,5 +21,9 @@ all: inscount.cpp XML/xmlwriter.cpp
 	-L$(PIN_USER)//extras/xed2-intel64/lib \
 	-lpin -lxed -ldwarf -lelf -ldl -std=c++11
 
+run:
+	$(PIN_USER)/pin -t obj-intel64/inscount.so -o inscount.log -- /bin/ls
+	sh system_info.sh
+
 clean:
 	rm *.o XML/*.o *.out obj-intel64/* *.log

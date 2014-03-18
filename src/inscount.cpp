@@ -79,14 +79,14 @@ VOID ImageLoad(IMG img, void *v)
 
     for( SYM sym = IMG_RegsymHead(img); SYM_Valid(sym); sym = SYM_Next(sym) )
     {
-        string symPureName =  PIN_UndecorateSymbolName(SYM_Name(sym), UNDECORATION_NAME_ONLY);
-        if (SYM_Valid(sym)) {
+        string symPureName =  PIN_UndecorateSymbolName(SYM_Name(sym), UNDECORATION_COMPLETE);
+
             output << "<Function=\"" << symPureName << "\">\n" \
             << "\t<SymIndex>" << SYM_Index(sym) << "</SymIndex>\n" \
             << "\t<SymAddress>" << SYM_Value(sym) << "</SymAddress>\n" \
-            << "</Function>" << endl;
-        }
+            << "</Function>\n";
     }
+    output << endl;
 
     output.close();
 }
