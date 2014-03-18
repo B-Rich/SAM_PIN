@@ -71,6 +71,11 @@ VOID docount(int op)
     opCount[op].call_times.push_back(calltime);
 }
 
+VOID docountsimple(UINT64 * counter)
+{
+    (*counter)++;
+}
+
 // Pin calls this function every time a new instruction is encountered
 VOID Instruction(INS ins, VOID *v)
 {
@@ -111,13 +116,13 @@ VOID Routine(RTN rtn, VOID *v)
     RTN_Open(rtn);
             
     // Insert a call at the entry point of a routine to increment the call count
-    RTN_InsertCall(rtn, IPOINT_BEFORE, (AFUNPTR)docount, IARG_PTR, &(rc->_rtnCount), IARG_END);
+    RTN_InsertCall(rtn, IPOINT_BEFORE, (AFUNPTR)docountsimple, IARG_PTR, &(rc->_rtnCount), IARG_END);
     
     // For each instruction of the routine
     for (INS ins = RTN_InsHead(rtn); INS_Valid(ins); ins = INS_Next(ins))
     {
         // Insert a call to docount to increment the instruction counter for this rtn
-        INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)docount, IARG_PTR, &(rc->_icount), IARG_END);
+        INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)docountsimple, IARG_PTR, &(rc->_icount), IARG_END);
     }
 
     
@@ -245,9 +250,9 @@ int main(int argc, char * argv[])
     // Register Instruction to be called to instrument instructions
     INS_AddInstrumentFunction(Instruction, 0);
 
-    //RTN_AddInstrumentFunction(Routine, 0);
+    /* Segfaults on this... */
+    RTN_AddInstrumentFunction(Routine, 0);
     
-/* Segfaults on this... */
     // Register Fini to be called when the application exits
     PIN_AddFiniFunction(Fini, 0);
 
