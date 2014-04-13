@@ -20,21 +20,22 @@ static void write_ram(ofstream *output, request *rq)
 	<< "</RAM>" << endl;
 }
 
-void XMLWriter::write_tag(const std::string tag) {
+void XMLWriter::write_tag(const std::string format, const std::string tag)
+{
 	
-	this->datafile << "<" << tag << ">" << endl;
+	this->datafile << format << "<" << tag << ">" << endl;
 
 }
 
 static void write_instruction(ofstream *output, request *rq)
 {
-	*output << "\t<instruction name=\"" << rq->data.op.name <<"\" total=\"" \
+	*output << "\t\t<Instruction name=\"" << rq->data.op.name <<"\" total=\"" \
 	<< rq->data.op.total << "\">" << rq->data.op.binned_times;
 	
 	// here we need to do times in bins
 
 
-	*output << "</instruction>" <<endl;
+	*output << "</Instruction>" <<endl;
 }
 
 XMLWriter::~XMLWriter(void)

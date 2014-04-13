@@ -81,10 +81,10 @@ VOID ImageLoad(IMG img, void *v)
     {
         string symPureName =  PIN_UndecorateSymbolName(SYM_Name(sym), UNDECORATION_COMPLETE);
 
-            output << "<Function=\"" << symPureName << "\">\n" \
-            << "\t<SymIndex>" << SYM_Index(sym) << "</SymIndex>\n" \
-            << "\t<SymAddress>" << SYM_Value(sym) << "</SymAddress>\n" \
-            << "</Function>\n";
+            output << "\t<Function name=\"" << symPureName << "\">\n" \
+            << "\t\t<SymIndex>" << SYM_Index(sym) << "</SymIndex>\n" \
+            << "\t\t<SymAddress>" << SYM_Value(sym) << "</SymAddress>\n" \
+            << "\t</Function>\n";
     }
     output << endl;
 
@@ -111,7 +111,7 @@ VOID Fini(INT32 code, VOID *v)
         std::cerr << "Error opening file!" << std::endl;
     }
 
-    writer->write_tag("Instruction");
+    writer->write_tag("\t", "Instruction");
     // Bin times
     for (int x = 0; x < 1200; ++x) {
         if(opCount[x].total == 0)
@@ -166,7 +166,7 @@ VOID Fini(INT32 code, VOID *v)
         final = "";
     }
 
-    writer->write_tag("/Instruction");
+    writer->write_tag("\t", "/Instruction");
 
     // Write to a file since cout and cerr maybe closed by the application
     OutFile.setf(ios::showbase);

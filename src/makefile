@@ -26,4 +26,4 @@ run:
 	sh system_info.sh
 
 clean:
-	rm *.o XML/*.o *.out obj-intel64/* *.log
+	rm *.o XML/*.o *.out obj-intel64/* *.log *.xml *.XML
