@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SAM_PIN_INFO>
+	<SystemInformation>
+			<SystemName>Linux indigo 3.8.0-27-generic #40-Ubuntu SMP Tue Jul 9 00:17:05 UTC 2013 x86_64 x86_64 x86_64 GNU/Linux</SystemName>
+			<RAM>MemTotal:       16335460 kB</RAM>
+			<CPUModel>Intel(R) Core(TM) i7-3610QM CPU @ 2.30GHz</CPUModel>
+	</SystemInformation>
+	<Function name="_init">
+		<SymIndex>10</SymIndex>
+		<SymAddress>3912</SymAddress>
+	</Function>
+	<Function name="attr_get">
+		<SymIndex>12</SymIndex>
+		<SymAddress>5184</SymAddress>
+	</Function>
+	<Function name="attr_getf">
+		<SymIndex>12</SymIndex>
+		<SymAddress>5472</SymAddress>
+	</Function>
+	<Function name="attr_set">
+		<SymIndex>12</SymIndex>
+		<SymAddress>5728</SymAddress>
+	</Function>
+	<Function name="attr_setf">
+		<SymIndex>12</SymIndex>
+		<SymAddress>6032</SymAddress>
+	</Function>
+	<Function name="attr_remove">
+		<SymIndex>12</SymIndex>
+		<SymAddress>6304</SymAddress>
+	</Function>
+	<Function name="attr_removef">
+		<SymIndex>12</SymIndex>
+		<SymAddress>6544</SymAddress>
+	</Function>
+	<Function name="attr_list">
+		<SymIndex>12</SymIndex>
+		<SymAddress>6752</SymAddress>
+	</Function>
+	<Function name="attr_listf">
+		<SymIndex>12</SymIndex>
+		<SymAddress>7184</SymAddress>
+	</Function>
+	<Function name="attr_multi">
+		<SymIndex>12</SymIndex>
+		<SymAddress>7552</SymAddress>
+	</Function>
+	<Function name="attr_multif">
+		<SymIndex>12</SymIndex>
+		<SymAddress>7824</SymAddress>
+	</Function>
+	<Function name="attr_copy_fd">
+		<SymIndex>12</SymIndex>
+		<SymAddress>8096</SymAddress>
+	</Function>
+	<Function name="attr_copy_file">
+		<SymIndex>12</SymIndex>
+		<SymAddress>9680</SymAddress>
+	</Function>
+	<Function name="attr_copy_check_permissions">
+		<SymIndex>12</SymIndex>
+		<SymAddress>11232</SymAddress>
+	</Function>
+	<Function name="attr_copy_action">
+		<SymIndex>12</SymIndex>
+		<SymAddress>11264</SymAddress>
+	</Function>
+	<Function name="setxattr">
+		<SymIndex>12</SymIndex>
+		<SymAddress>12288</SymAddress>
+	</Function>
+	<Function name="lsetxattr">
+		<SymIndex>12</SymIndex>
+		<SymAddress>12336</SymAddress>
+	</Function>
+	<Function name="fsetxattr">
+		<SymIndex>12</SymIndex>
+		<SymAddress>12384</SymAddress>
+	</Function>
+	<Function name="getxattr">
+		<SymIndex>12</SymIndex>
+		<SymAddress>12432</SymAddress>
+	</Function>
+	<Function name="lgetxattr">
+		<SymIndex>12</SymIndex>
+		<SymAddress>12464</SymAddress>
+	</Function>
+	<Function name="fgetxattr">
+		<SymIndex>12</SymIndex>
+		<SymAddress>12496</SymAddress>
+	</Function>
+	<Function name="listxattr">
+		<SymIndex>12</SymIndex>
+		<SymAddress>12528</SymAddress>
+	</Function>
+	<Function name="llistxattr">
+		<SymIndex>12</SymIndex>
+		<SymAddress>12560</SymAddress>
+	</Function>
+	<Function name="flistxattr">
+		<SymIndex>12</SymIndex>
+		<SymAddress>12592</SymAddress>
+	</Function>
+	<Function name="removexattr">
+		<SymIndex>12</SymIndex>
+		<SymAddress>12624</SymAddress>
+	</Function>
+	<Function name="lremovexattr">
+		<SymIndex>12</SymIndex>
+		<SymAddress>12656</SymAddress>
+	</Function>
+	<Function name="fremovexattr">
+		<SymIndex>12</SymIndex>
+		<SymAddress>12688</SymAddress>
+	</Function>
+	<Function name="_fini">
+		<SymIndex>13</SymIndex>
+		<SymAddress>12716</SymAddress>
+	</Function>
+
+	<Instruction>
+		<Instruction name="ADD" total="37266"> 409 337 6378 11838 722 8865 815 4107 1952 1841 </Instruction>
+		<Instruction name="AND" total="12550">43 70 952 4500 216 4634 452 645 602 434 </Instruction>
+		<Instruction name="BSF" total="263">0 2 22 0 2 1 44 143 49 0 </Instruction>
+		<Instruction name="BSR" total="4">0 0 0 0 4 0 0 0 0 0 </Instruction>
+		<Instruction name="BT" total="190">0 0 0 135 8 7 7 10 10 13 </Instruction>
+		<Instruction name="CALL_NEAR" total="4800">34 73 1180 1221 257 173 283 538 502 538 </Instruction>
+		<Instruction name="CDQE" total="31">1 1 6 0 2 1 2 16 2 0 </Instruction>
+		<Instruction name="CMOVB" total="1329">1 9 555 366 38 48 48 80 80 104 </Instruction>
+		<Instruction name="CMOVBE" total="37">0 0 1 13 0 0 0 0 16 7 </Instruction>
+		<Instruction name="CMOVL" total="1">0 0 0 0 0 0 1 0 0 0 </Instruction>
+		<Instruction name="CMOVNB" total="69">0 0 0 0 1 2 5 33 28 0 </Instruction>
+		<Instruction name="CMOVNBE" total="12">5 1 6 0 0 0 0 0 0 0 </Instruction>
+		<Instruction name="CMOVNL" total="1">0 0 0 0 0 0 1 0 0 0 </Instruction>
+		<Instruction name="CMOVNZ" total="91">2 5 40 0 4 0 2 12 10 16 </Instruction>
+		<Instruction name="CMOVS" total="1">0 0 0 0 0 0 0 0 0 1 </Instruction>
+		<Instruction name="CMOVZ" total="84">1 3 10 3 6 11 9 14 12 15 </Instruction>
+		<Instruction name="CMP" total="41856">415 482 9035 11113 923 6832 1100 5446 3236 3270 </Instruction>
+		<Instruction name="CMPXCHG" total="92">0 0 0 0 2 6 7 41 25 11 </Instruction>
+		<Instruction name="CPUID" total="30">0 0 0 2 28 0 0 0 0 0 </Instruction>
+		<Instruction name="DEC" total="270">10 41 134 1 1 5 5 39 25 9 </Instruction>
+		<Instruction name="DIV" total="384">0 0 3 154 7 10 11 12 142 45 </Instruction>
+		<Instruction name="IDIV" total="2">0 0 0 0 2 0 0 0 0 0 </Instruction>
+		<Instruction name="IMUL" total="447">2 3 35 134 133 8 9 11 83 29 </Instruction>
+		<Instruction name="INC" total="11660">23 52 2865 5354 444 410 420 622 620 850 </Instruction>
+		<Instruction name="JB" total="3166">21 7 75 18 92 2216 4 346 181 205 </Instruction>
+		<Instruction name="JBE" total="3174">78 107 771 796 6 5 52 757 370 232 </Instruction>
+		<Instruction name="JL" total="24">0 0 0 0 0 0 0 0 10 14 </Instruction>
+		<Instruction name="JLE" total="352">0 4 24 155 16 12 39 27 37 37 </Instruction>
+		<Instruction name="JMP" total="4891">75 63 496 737 91 997 283 617 842 687 </Instruction>
+		<Instruction name="JNB" total="1799">37 60 348 168 25 658 47 55 162 239 </Instruction>
+		<Instruction name="JNBE" total="5498">47 74 1511 1159 21 1064 119 846 437 219 </Instruction>
+		<Instruction name="JNL" total="225">0 6 46 0 108 3 25 1 14 22 </Instruction>
+		<Instruction name="JNLE" total="403">1 6 46 14 2 3 62 11 119 139 </Instruction>
+		<Instruction name="JNS" total="66">0 0 0 9 0 0 0 0 55 2 </Instruction>
+		<Instruction name="JNZ" total="38186">220 365 7591 14277 961 3953 1381 4277 2374 2783 </Instruction>
+		<Instruction name="JS" total="64">1 5 28 0 10 8 1 1 4 6 </Instruction>
+		<Instruction name="JZ" total="32139">309 279 4891 10559 654 6681 1236 3580 1895 2048 </Instruction>
+		<Instruction name="LDDQU" total="9">0 0 0 0 0 0 0 8 1 0 </Instruction>
+		<Instruction name="LEA" total="15106">148 341 2424 2267 328 5633 389 1370 1485 721 </Instruction>
+		<Instruction name="LEAVE" total="58">0 0 40 0 0 0 0 12 0 6 </Instruction>
+		<Instruction name="MOV" total="132202">968 1474 20395 51293 3527 15225 4788 12134 12793 9582 </Instruction>
+		<Instruction name="MOVD" total="29">0 2 22 0 1 0 4 0 0 0 </Instruction>
+		<Instruction name="MOVDQA" total="148">0 8 80 0 4 0 48 8 0 0 </Instruction>
+		<Instruction name="MOVDQU" total="201">0 0 0 0 0 1 82 71 47 0 </Instruction>
+		<Instruction name="MOVHPD" total="154">0 0 0 0 0 0 12 142 0 0 </Instruction>
+		<Instruction name="MOVLPD" total="154">0 0 0 0 0 0 12 142 0 0 </Instruction>
+		<Instruction name="MOVQ" total="26">0 0 0 0 0 1 25 0 0 0 </Instruction>
+		<Instruction name="MOVSX" total="805">0 97 686 3 0 0 10 0 0 9 </Instruction>
+		<Instruction name="MOVSXD" total="1091">28 14 76 172 2 2 55 450 289 2 </Instruction>
+		<Instruction name="MOVZX" total="11983">35 101 925 3595 331 4552 272 448 945 779 </Instruction>
+		<Instruction name="MUL" total="10">1 1 1 7 0 0 0 0 0 0 </Instruction>
+		<Instruction name="NEG" total="194">17 21 137 9 1 1 3 0 1 4 </Instruction>
+		<Instruction name="NOP" total="1175">18 28 198 355 42 42 92 165 105 129 </Instruction>
+		<Instruction name="NOT" total="35">3 3 18 0 2 1 0 6 0 2 </Instruction>
+		<Instruction name="OR" total="794">21 31 254 185 123 19 15 98 45 3 </Instruction>
+		<Instruction name="PCMPEQB" total="426">0 8 80 0 4 1 61 221 51 0 </Instruction>
+		<Instruction name="PCMPISTRI" total="33">0 0 0 0 0 0 33 0 0 0 </Instruction>
+		<Instruction name="PMOVMSKB" total="345">0 8 80 0 4 1 55 146 51 0 </Instruction>
+		<Instruction name="POP" total="7167">36 91 985 2304 319 232 412 924 1100 753 </Instruction>
+		<Instruction name="PSHUFD" total="55">0 2 22 0 1 1 29 0 0 0 </Instruction>
+		<Instruction name="PSLLDQ" total="4">0 0 0 0 0 0 0 4 0 0 </Instruction>
+		<Instruction name="PSRLDQ" total="1">0 0 0 0 0 0 1 0 0 0 </Instruction>
+		<Instruction name="PSUBB" total="81">0 0 0 0 0 0 6 75 0 0 </Instruction>
+		<Instruction name="PUNPCKLBW" total="110">0 4 44 0 2 2 58 0 0 0 </Instruction>
+		<Instruction name="PUSH" total="7342">66 86 1024 2286 332 259 426 943 1137 783 </Instruction>
+		<Instruction name="PXOR" total="282">0 2 22 0 1 0 48 152 57 0 </Instruction>
+		<Instruction name="RDTSC" total="19">12 1 2 4 0 0 0 0 0 0 </Instruction>
+		<Instruction name="RET_NEAR" total="4795">29 73 1181 1223 256 170 283 540 497 541 </Instruction>
+		<Instruction name="ROL" total="115">0 3 48 0 56 0 4 1 3 0 </Instruction>
+		<Instruction name="ROR" total="26">0 0 0 0 0 2 13 5 0 6 </Instruction>
+		<Instruction name="SAR" total="388">2 10 70 146 26 16 19 16 68 15 </Instruction>
+		<Instruction name="SBB" total="124">3 2 6 0 109 1 0 1 0 2 </Instruction>
+		<Instruction name="SETB" total="74">0 0 0 0 0 0 30 0 44 0 </Instruction>
+		<Instruction name="SETBE" total="1">0 1 0 0 0 0 0 0 0 0 </Instruction>
+		<Instruction name="SETNZ" total="958">1 1 19 15 0 4 2 31 439 446 </Instruction>
+		<Instruction name="SETS" total="28">0 0 0 0 0 0 28 0 0 0 </Instruction>
+		<Instruction name="SETZ" total="558">0 2 1 447 8 8 41 24 11 16 </Instruction>
+		<Instruction name="SHL" total="3408">32 49 287 2279 142 71 62 193 136 157 </Instruction>
+		<Instruction name="SHR" total="5532">11 20 114 3612 279 179 173 506 351 287 </Instruction>
+		<Instruction name="STOSQ" total="763">0 0 296 64 16 0 0 0 387 0 </Instruction>
+		<Instruction name="SUB" total="4233">100 151 1006 815 121 130 280 520 608 502 </Instruction>
+		<Instruction name="SYSCALL" total="117">2 15 55 10 7 8 7 2 6 4 </Instruction>
+		<Instruction name="TEST" total="39073">272 298 5763 15135 913 5490 1631 4194 2532 2836 </Instruction>
+		<Instruction name="XCHG" total="33">0 0 0 0 20 0 0 13 0 0 </Instruction>
+		<Instruction name="XGETBV" total="2">0 0 0 1 1 0 0 0 0 0 </Instruction>
+		<Instruction name="XOR" total="4801">34 62 643 1789 214 125 212 363 752 606 </Instruction>
+	</Instruction>
+-e </SAM_PIN_INFO>
