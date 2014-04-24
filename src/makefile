@@ -22,7 +22,7 @@ all: inscount.cpp XML/xmlwriter.cpp
 	-lpin -lxed -ldwarf -lelf -ldl -std=c++11
 
 run:
-	$(PIN_USER)/pin -t obj-intel64/inscount.so -o inscount.log -- /bin/ls
+	$(PIN_USER)/pin -t obj-intel64/inscount.so -o inscount.log -- /bin/less
 	sh system_info.sh
 
 clean:

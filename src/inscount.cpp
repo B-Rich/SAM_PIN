@@ -40,12 +40,154 @@ END_LEGAL */
 #include "xed-interface.h"
 #include "pin.H"
 
+typedef UINT64 CACHE_STATS; // type of cache hit/miss counters
+
+#include "pin_cache.H"
+
+
 ofstream OutFile;
 struct Instruction opCount[1200];
 
 clock_t calltime;
 clock_t start;
 double total_elapsed;
+
+namespace IL1
+{
+    // 1st level instruction cache: 32 kB, 32 B lines, 32-way associative
+    const UINT32 cacheSize = 32*KILO;
+    const UINT32 lineSize = 32;
+    const UINT32 associativity = 32;
+    const CACHE_ALLOC::STORE_ALLOCATION allocation = CACHE_ALLOC::STORE_NO_ALLOCATE;
+
+    const UINT32 max_sets = cacheSize / (lineSize * associativity);
+    const UINT32 max_associativity = associativity;
+
+    typedef CACHE_ROUND_ROBIN(max_sets, max_associativity, allocation) CACHE;
+}
+LOCALVAR IL1::CACHE il1("L1 Instruction Cache", IL1::cacheSize, IL1::lineSize, IL1::associativity);
+
+namespace DL1
+{
+    // 1st level data cache: 32 kB, 32 B lines, 32-way associative
+    const UINT32 cacheSize = 32*KILO;
+    const UINT32 lineSize = 32;
+    const UINT32 associativity = 32;
+    const CACHE_ALLOC::STORE_ALLOCATION allocation = CACHE_ALLOC::STORE_NO_ALLOCATE;
+
+    const UINT32 max_sets = cacheSize / (lineSize * associativity);
+    const UINT32 max_associativity = associativity;
+
+    typedef CACHE_ROUND_ROBIN(max_sets, max_associativity, allocation) CACHE;
+}
+LOCALVAR DL1::CACHE dl1("L1 Data Cache", DL1::cacheSize, DL1::lineSize, DL1::associativity);
+
+namespace UL2
+{
+    // 2nd level unified cache: 2 MB, 64 B lines, direct mapped
+    const UINT32 cacheSize = 2*MEGA;
+    const UINT32 lineSize = 64;
+    const UINT32 associativity = 1;
+    const CACHE_ALLOC::STORE_ALLOCATION allocation = CACHE_ALLOC::STORE_ALLOCATE;
+
+    const UINT32 max_sets = cacheSize / (lineSize * associativity);
+
+    typedef CACHE_DIRECT_MAPPED(max_sets, allocation) CACHE;
+}
+LOCALVAR UL2::CACHE ul2("L2 Unified Cache", UL2::cacheSize, UL2::lineSize, UL2::associativity);
+
+namespace UL3
+{
+    // 3rd level unified cache: 16 MB, 64 B lines, direct mapped
+    const UINT32 cacheSize = 16*MEGA;
+    const UINT32 lineSize = 64;
+    const UINT32 associativity = 1;
+    const CACHE_ALLOC::STORE_ALLOCATION allocation = CACHE_ALLOC::STORE_ALLOCATE;
+
+    const UINT32 max_sets = cacheSize / (lineSize * associativity);
+
+    typedef CACHE_DIRECT_MAPPED(max_sets, allocation) CACHE;
+}
+LOCALVAR UL3::CACHE ul3("L3 Unified Cache", UL3::cacheSize, UL3::lineSize, UL3::associativity);
+
+LOCALFUN VOID Ul2Access(ADDRINT addr, UINT32 size, CACHE_BASE::ACCESS_TYPE accessType)
+{
+    // second level unified cache
+    const BOOL ul2Hit = ul2.Access(addr, size, accessType);
+
+    // third level unified cache
+    if ( ! ul2Hit) ul3.Access(addr, size, accessType);
+}
+
+LOCALFUN VOID InsRef(ADDRINT addr)
+{
+    const UINT32 size = 1; // assuming access does not cross cache lines
+    const CACHE_BASE::ACCESS_TYPE accessType = CACHE_BASE::ACCESS_TYPE_LOAD;
+
+   
+
+    // first level I-cache
+    const BOOL il1Hit = il1.AccessSingleLine(addr, accessType);
+
+    // second level unified Cache
+    if ( ! il1Hit) Ul2Access(addr, size, accessType);
+}
+
+LOCALFUN VOID MemRefMulti(ADDRINT addr, UINT32 size, CACHE_BASE::ACCESS_TYPE accessType)
+{
+    // first level D-cache
+    const BOOL dl1Hit = dl1.Access(addr, size, accessType);
+
+    // second level unified Cache
+    if ( ! dl1Hit) Ul2Access(addr, size, accessType);
+}
+
+LOCALFUN VOID MemRefSingle(ADDRINT addr, UINT32 size, CACHE_BASE::ACCESS_TYPE accessType)
+{
+
+    // first level D-cache
+    const BOOL dl1Hit = dl1.AccessSingleLine(addr, accessType);
+
+    // second level unified Cache
+    if ( ! dl1Hit) Ul2Access(addr, size, accessType);
+}
+
+LOCALFUN VOID Cache(INS ins, VOID *v)
+{
+    // all instruction fetches access I-cache
+    INS_InsertCall(
+        ins, IPOINT_BEFORE, (AFUNPTR)InsRef,
+        IARG_INST_PTR,
+        IARG_END);
+
+    if (INS_IsMemoryRead(ins))
+    {
+        const UINT32 size = INS_MemoryReadSize(ins);
+        const AFUNPTR countFun = (size <= 4 ? (AFUNPTR) MemRefSingle : (AFUNPTR) MemRefMulti);
+
+        // only predicated-on memory instructions access D-cache
+        INS_InsertPredicatedCall(
+            ins, IPOINT_BEFORE, countFun,
+            IARG_MEMORYREAD_EA,
+            IARG_MEMORYREAD_SIZE,
+            IARG_UINT32, CACHE_BASE::ACCESS_TYPE_LOAD,
+            IARG_END);
+    }
+
+    if (INS_IsMemoryWrite(ins))
+    {
+        const UINT32 size = INS_MemoryWriteSize(ins);
+        const AFUNPTR countFun = (size <= 4 ? (AFUNPTR) MemRefSingle : (AFUNPTR) MemRefMulti);
+
+        // only predicated-on memory instructions access D-cache
+        INS_InsertPredicatedCall(
+            ins, IPOINT_BEFORE, countFun,
+            IARG_MEMORYWRITE_EA,
+            IARG_MEMORYWRITE_SIZE,
+            IARG_UINT32, CACHE_BASE::ACCESS_TYPE_STORE,
+            IARG_END);
+    }
+}
 
 // This function is called before every instruction is executed
 VOID docount(int op)
@@ -66,40 +208,6 @@ VOID Instruction(INS ins, VOID *v)
 {
     // Insert a call to docount before every instruction, no arguments are passed
     INS_InsertCall(ins, IPOINT_BEFORE, (AFUNPTR)docount, IARG_UINT32, INS_Opcode(ins), IARG_END);
-
-    /* Code taken from example. To be adapted to our use case 
-
-    // Instruments memory accesses using a predicated call, i.e.
-    // the instrumentation is called iff the instruction will actually be executed.
-    //
-    // On the IA-32 and Intel(R) 64 architectures conditional moves and REP 
-    // prefixed instructions appear as predicated instructions in Pin.
-    UINT32 memOperands = INS_MemoryOperandCount(ins);
-
-    // Iterate over each memory operand of the instruction.
-    for (UINT32 memOp = 0; memOp < memOperands; memOp++)
-    {
-        if (INS_MemoryOperandIsRead(ins, memOp))
-        {
-            INS_InsertPredicatedCall(
-                ins, IPOINT_BEFORE, (AFUNPTR)RecordMemRead,
-                IARG_INST_PTR,
-                IARG_MEMORYOP_EA, memOp,
-                IARG_END);
-        }
-        // Note that in some architectures a single memory operand can be 
-        // both read and written (for instance incl (%eax) on IA-32)
-        // In that case we instrument it once for read and once for write.
-        if (INS_MemoryOperandIsWritten(ins, memOp))
-        {
-            INS_InsertPredicatedCall(
-                ins, IPOINT_BEFORE, (AFUNPTR)RecordMemWrite,
-                IARG_INST_PTR,
-                IARG_MEMORYOP_EA, memOp,
-                IARG_END);
-        }
-    }
-    */
 }
 
 KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool",
@@ -111,16 +219,14 @@ VOID ImageLoad(IMG img, void *v)
     fstream output;
     output.open("output.xml", std::fstream::out);
 
-    //output << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" << endl;
-
     for( SYM sym = IMG_RegsymHead(img); SYM_Valid(sym); sym = SYM_Next(sym) )
     {
         string symPureName =  PIN_UndecorateSymbolName(SYM_Name(sym), UNDECORATION_COMPLETE);
 
-            output << "\t<Function name=\"" << symPureName << "\">\n" \
-            << "\t\t<SymIndex>" << SYM_Index(sym) << "</SymIndex>\n" \
-            << "\t\t<SymAddress>" << SYM_Value(sym) << "</SymAddress>\n" \
-            << "\t</Function>\n";
+            output << "<Function=\"" << symPureName << "\">\n" \
+            << "\t<SymIndex>" << SYM_Index(sym) << "</SymIndex>\n" \
+            << "\t<SymAddress>" << SYM_Value(sym) << "</SymAddress>\n" \
+            << "</Function>\n";
     }
     output << endl;
 
@@ -147,7 +253,7 @@ VOID Fini(INT32 code, VOID *v)
         std::cerr << "Error opening file!" << std::endl;
     }
 
-    writer->write_tag("\t", "Instruction");
+    writer->write_tag("Instruction", "");
     // Bin times
     for (int x = 0; x < 1200; ++x) {
         if(opCount[x].total == 0)
@@ -202,12 +308,17 @@ VOID Fini(INT32 code, VOID *v)
         final = "";
     }
 
-    writer->write_tag("\t", "/Instruction");
+    writer->write_tag("Instruction", "/");
 
     // Write to a file since cout and cerr maybe closed by the application
     OutFile.setf(ios::showbase);
     OutFile << "Our Count: " << total << endl;
     OutFile.close();
+
+    std::cerr << il1;
+    std::cerr << dl1;
+    std::cerr << ul2;
+    std::cerr << ul3;
 }
 
 /* ===================================================================== */
@@ -227,7 +338,7 @@ INT32 Usage()
 /*   argc, argv are the entire command line: pin -t <toolname> -- ...    */
 /* ===================================================================== */
 
-int main(int argc, char * argv[])
+GLOBALFUN int main(int argc, char * argv[])
 {
     PIN_InitSymbols();
 
@@ -240,6 +351,8 @@ int main(int argc, char * argv[])
 
     // Register Instruction to be called to instrument instructions
     INS_AddInstrumentFunction(Instruction, 0);
+
+    INS_AddInstrumentFunction(Cache, 0);
 
     // Register Fini to be called when the application exits
     PIN_AddFiniFunction(Fini, 0);
