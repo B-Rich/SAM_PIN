@@ -219,15 +219,19 @@ VOID ImageLoad(IMG img, void *v)
     fstream output;
     output.open("output.xml", std::fstream::out);
 
+    output << "\t<Functions>\n";
+
     for( SYM sym = IMG_RegsymHead(img); SYM_Valid(sym); sym = SYM_Next(sym) )
     {
         string symPureName =  PIN_UndecorateSymbolName(SYM_Name(sym), UNDECORATION_COMPLETE);
-
-            output << "<Function=\"" << symPureName << "\">\n" \
-            << "\t<SymIndex>" << SYM_Index(sym) << "</SymIndex>\n" \
-            << "\t<SymAddress>" << SYM_Value(sym) << "</SymAddress>\n" \
-            << "</Function>\n";
+        
+            output << "\t\t<Function name=\"" << symPureName << "\">\n" \
+            << "\t\t\t<SymIndex>" << SYM_Index(sym) << "</SymIndex>\n" \
+            << "\t\t\t<SymAddress>" << SYM_Value(sym) << "</SymAddress>\n" \
+            << "\t\t</Function>\n";
     }
+
+    output << "\t</Functions>\n";
     output << endl;
 
     output.close();
@@ -253,7 +257,7 @@ VOID Fini(INT32 code, VOID *v)
         std::cerr << "Error opening file!" << std::endl;
     }
 
-    writer->write_tag("Instruction", "");
+    writer->write_tag("\t", "Instruction");
     // Bin times
     for (int x = 0; x < 1200; ++x) {
         if(opCount[x].total == 0)
@@ -308,7 +312,7 @@ VOID Fini(INT32 code, VOID *v)
         final = "";
     }
 
-    writer->write_tag("Instruction", "/");
+    writer->write_tag("\t", "/Instruction");
 
     // Write to a file since cout and cerr maybe closed by the application
     OutFile.setf(ios::showbase);
