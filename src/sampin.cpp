@@ -338,7 +338,7 @@ VOID Fini(INT32 code, VOID *v)
     rq->data.cache.storehits = dl1.Hits(dl1.ACCESS_TYPE_STORE);
     rq->data.cache.storemisses = dl1.Hits(dl1.ACCESS_TYPE_STORE);
     rq->data.cache.storeaccess = dl1.Hits(dl1.ACCESS_TYPE_STORE);
-    rq->data.cache.storemissrate = (100.0 * dl1.Misses(il1.ACCESS_TYPE_STORE) / dl1.Accesses(dl1.ACCESS_TYPE_STORE));
+    rq->data.cache.storemissrate = (100.0 * dl1.Misses(dl1.ACCESS_TYPE_STORE) / dl1.Accesses(dl1.ACCESS_TYPE_STORE));
     rq->data.cache.totalhit = dl1.Hits();
     rq->data.cache.totalmiss = dl1.Hits();
     rq->data.cache.totalaccess = dl1.Hits();
@@ -354,7 +354,7 @@ VOID Fini(INT32 code, VOID *v)
     rq->data.cache.storehits = ul2.Hits(ul2.ACCESS_TYPE_STORE);
     rq->data.cache.storemisses = ul2.Hits(ul2.ACCESS_TYPE_STORE);
     rq->data.cache.storeaccess = ul2.Hits(ul2.ACCESS_TYPE_STORE);
-    rq->data.cache.storemissrate = (100.0 * ul2.Misses(il1.ACCESS_TYPE_STORE) / ul2.Accesses(ul2.ACCESS_TYPE_STORE));
+    rq->data.cache.storemissrate = (100.0 * ul2.Misses(ul2.ACCESS_TYPE_STORE) / ul2.Accesses(ul2.ACCESS_TYPE_STORE));
     rq->data.cache.totalhit = ul2.Hits();
     rq->data.cache.totalmiss = ul2.Hits();
     rq->data.cache.totalaccess = ul2.Hits();
@@ -370,7 +370,7 @@ VOID Fini(INT32 code, VOID *v)
     rq->data.cache.storehits = ul3.Hits(ul3.ACCESS_TYPE_STORE);
     rq->data.cache.storemisses = ul3.Hits(ul3.ACCESS_TYPE_STORE);
     rq->data.cache.storeaccess = ul3.Hits(ul3.ACCESS_TYPE_STORE);
-    rq->data.cache.storemissrate = (100.0 * ul3.Misses(il1.ACCESS_TYPE_STORE) / ul3.Accesses(ul3.ACCESS_TYPE_STORE));
+    rq->data.cache.storemissrate = (100.0 * ul3.Misses(ul3.ACCESS_TYPE_STORE) / ul3.Accesses(ul3.ACCESS_TYPE_STORE));
     rq->data.cache.totalhit = ul3.Hits();
     rq->data.cache.totalmiss = ul3.Hits();
     rq->data.cache.totalaccess = ul3.Hits();
