@@ -128,7 +128,7 @@ LOCALFUN VOID InsRef(ADDRINT addr)
 
     // first level I-cache
     const BOOL il1Hit = il1.AccessSingleLine(addr, accessType);
-
+    
     // second level unified Cache
     if ( ! il1Hit) Ul2Access(addr, size, accessType);
 }
@@ -151,7 +151,7 @@ LOCALFUN VOID MemRefSingle(ADDRINT addr, UINT32 size, CACHE_BASE::ACCESS_TYPE ac
     // second level unified Cache
     if ( ! dl1Hit) Ul2Access(addr, size, accessType);
 }
-
+int wcount = 0;
 LOCALFUN VOID Cache(INS ins, VOID *v)
 {
     // all instruction fetches access I-cache
@@ -176,6 +176,7 @@ LOCALFUN VOID Cache(INS ins, VOID *v)
 
     if (INS_IsMemoryWrite(ins))
     {
+        wcount++;
         const UINT32 size = INS_MemoryWriteSize(ins);
         const AFUNPTR countFun = (size <= 4 ? (AFUNPTR) MemRefSingle : (AFUNPTR) MemRefMulti);
 
@@ -196,11 +197,6 @@ VOID docount(int op)
 
     opCount[op].total++;
     opCount[op].call_times.push_back(calltime);
-}
-
-VOID docountsimple(UINT64 * counter)
-{
-    (*counter)++;
 }
 
 // Pin calls this function every time a new instruction is encountered
@@ -257,7 +253,7 @@ VOID Fini(INT32 code, VOID *v)
         std::cerr << "Error opening file!" << std::endl;
     }
 
-    writer->write_tag("\t", "Instruction");
+    writer->write_tag("\t", "Instructions");
     // Bin times
     for (int x = 0; x < 1200; ++x) {
         if(opCount[x].total == 0)
@@ -312,17 +308,83 @@ VOID Fini(INT32 code, VOID *v)
         final = "";
     }
 
-    writer->write_tag("\t", "/Instruction");
+    writer->write_tag("\t", "/Instructions");
+
+    // Write Cache info
+    writer->write_tag("\t", "Caches");
+
+    rq->type = 'c';
+    rq->data.cache.type = strdup(il1.Name().c_str());
+    rq->data.cache.loadhits = il1.Hits(il1.ACCESS_TYPE_LOAD);
+    rq->data.cache.loadmisses = il1.Misses(il1.ACCESS_TYPE_LOAD);
+    rq->data.cache.loadaccess = il1.Accesses(il1.ACCESS_TYPE_LOAD);
+    rq->data.cache.loadmissrate = (100.0 * il1.Misses(il1.ACCESS_TYPE_LOAD) / il1.Accesses(il1.ACCESS_TYPE_LOAD));
+    rq->data.cache.storehits = il1.Hits(il1.ACCESS_TYPE_STORE);
+    rq->data.cache.storemisses = il1.Hits(il1.ACCESS_TYPE_STORE);
+    rq->data.cache.storeaccess = il1.Hits(il1.ACCESS_TYPE_STORE);
+    rq->data.cache.storemissrate = (100.0 * il1.Misses(il1.ACCESS_TYPE_STORE) / il1.Accesses(il1.ACCESS_TYPE_STORE));
+    rq->data.cache.totalhit = il1.Hits();
+    rq->data.cache.totalmiss = il1.Hits();
+    rq->data.cache.totalaccess = il1.Hits();
+    rq->data.cache.totalmissrate = (100.0 * il1.Misses() / il1.Accesses());
+
+    writer->write_request(rq);
+
+    rq->data.cache.type = strdup(dl1.Name().c_str());
+    rq->data.cache.loadhits = dl1.Hits(dl1.ACCESS_TYPE_LOAD);
+    rq->data.cache.loadmisses = dl1.Misses(dl1.ACCESS_TYPE_LOAD);
+    rq->data.cache.loadaccess = dl1.Accesses(dl1.ACCESS_TYPE_LOAD);
+    rq->data.cache.loadmissrate = (100.0 * dl1.Misses(dl1.ACCESS_TYPE_LOAD) / dl1.Accesses(dl1.ACCESS_TYPE_LOAD));
+    rq->data.cache.storehits = dl1.Hits(dl1.ACCESS_TYPE_STORE);
+    rq->data.cache.storemisses = dl1.Hits(dl1.ACCESS_TYPE_STORE);
+    rq->data.cache.storeaccess = dl1.Hits(dl1.ACCESS_TYPE_STORE);
+    rq->data.cache.storemissrate = (100.0 * dl1.Misses(il1.ACCESS_TYPE_STORE) / dl1.Accesses(dl1.ACCESS_TYPE_STORE));
+    rq->data.cache.totalhit = dl1.Hits();
+    rq->data.cache.totalmiss = dl1.Hits();
+    rq->data.cache.totalaccess = dl1.Hits();
+    rq->data.cache.totalmissrate = (100.0 * dl1.Misses() / dl1.Accesses());
+
+    writer->write_request(rq);
+
+    rq->data.cache.type = strdup(ul2.Name().c_str());
+    rq->data.cache.loadhits = ul2.Hits(ul2.ACCESS_TYPE_LOAD);
+    rq->data.cache.loadmisses = ul2.Misses(ul2.ACCESS_TYPE_LOAD);
+    rq->data.cache.loadaccess = ul2.Accesses(ul2.ACCESS_TYPE_LOAD);
+    rq->data.cache.loadmissrate = (100.0 * ul2.Misses(ul2.ACCESS_TYPE_LOAD) / ul2.Accesses(ul2.ACCESS_TYPE_LOAD));
+    rq->data.cache.storehits = ul2.Hits(ul2.ACCESS_TYPE_STORE);
+    rq->data.cache.storemisses = ul2.Hits(ul2.ACCESS_TYPE_STORE);
+    rq->data.cache.storeaccess = ul2.Hits(ul2.ACCESS_TYPE_STORE);
+    rq->data.cache.storemissrate = (100.0 * ul2.Misses(il1.ACCESS_TYPE_STORE) / ul2.Accesses(ul2.ACCESS_TYPE_STORE));
+    rq->data.cache.totalhit = ul2.Hits();
+    rq->data.cache.totalmiss = ul2.Hits();
+    rq->data.cache.totalaccess = ul2.Hits();
+    rq->data.cache.totalmissrate = (100.0 * ul2.Misses() / ul2.Accesses());
+
+    writer->write_request(rq);
+
+    rq->data.cache.type = strdup(ul3.Name().c_str());
+    rq->data.cache.loadhits = ul3.Hits(ul3.ACCESS_TYPE_LOAD);
+    rq->data.cache.loadmisses = ul3.Misses(ul3.ACCESS_TYPE_LOAD);
+    rq->data.cache.loadaccess = ul3.Accesses(ul3.ACCESS_TYPE_LOAD);
+    rq->data.cache.loadmissrate = (100.0 * ul3.Misses(ul3.ACCESS_TYPE_LOAD) / ul3.Accesses(ul3.ACCESS_TYPE_LOAD));
+    rq->data.cache.storehits = ul3.Hits(ul3.ACCESS_TYPE_STORE);
+    rq->data.cache.storemisses = ul3.Hits(ul3.ACCESS_TYPE_STORE);
+    rq->data.cache.storeaccess = ul3.Hits(ul3.ACCESS_TYPE_STORE);
+    rq->data.cache.storemissrate = (100.0 * ul3.Misses(il1.ACCESS_TYPE_STORE) / ul3.Accesses(ul3.ACCESS_TYPE_STORE));
+    rq->data.cache.totalhit = ul3.Hits();
+    rq->data.cache.totalmiss = ul3.Hits();
+    rq->data.cache.totalaccess = ul3.Hits();
+    rq->data.cache.totalmissrate = (100.0 * ul3.Misses() / ul3.Accesses());
+
+    writer->write_request(rq);
+
+    writer->write_tag("\t", "/Caches");
+
 
     // Write to a file since cout and cerr maybe closed by the application
     OutFile.setf(ios::showbase);
     OutFile << "Our Count: " << total << endl;
     OutFile.close();
-
-    std::cerr << il1;
-    std::cerr << dl1;
-    std::cerr << ul2;
-    std::cerr << ul3;
 }
 
 /* ===================================================================== */

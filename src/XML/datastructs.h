@@ -25,6 +25,22 @@ struct opinfo {
 	char *binned_times;
 };
 
+struct cacheinfo {
+	char *type;
+	int loadhits;
+	int loadmisses;
+	int loadaccess;
+	float loadmissrate;
+	int storehits;
+	int storemisses;
+	int storeaccess;
+	float storemissrate;
+	int totalhit;
+	int totalmiss;
+	int totalaccess;
+	float totalmissrate;
+};
+
 // Struct for our instruction calls
 struct Instruction
 {
@@ -39,6 +55,7 @@ struct request {
 		struct cpuinfo cpu;
 		struct raminfo ram;
 		struct opinfo op;
+		struct cacheinfo cache;
 	} data;
 	unsigned char type;
 };
