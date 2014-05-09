@@ -15,20 +15,18 @@ static void write_instruction(ofstream *output, request *rq)
 {
 	*output << "\t\t<Instruction name=\"" << rq->data.op.name <<"\" total=\"" \
 	<< rq->data.op.total << "\">" << rq->data.op.binned_times;
-	
-	// here we need to do times in bins
-
 
 	*output << "</Instruction>" <<endl;
 }
 
 static void write_cache(ofstream *output, request *rq)
 {
-	*output << std::fixed << "\t\t<Cache name=\"" << rq->data.cache.type << "\">\n" \
+	*output << std::fixed << std::setprecision(3)
+	<< "\t\t<Cache name=\"" << rq->data.cache.type << "\">\n" \
 	<< "\t\t\t<LoadHits>"		<< rq->data.cache.loadhits << "</LoadHits>\n" \
 	<< "\t\t\t<LoadMisses>"		<< rq->data.cache.loadmisses << "</LoadMisses>\n" \
 	<< "\t\t\t<LoadAccesses>"	<< rq->data.cache.loadaccess << "</LoadAccesses>\n" \
-	<< "\t\t\t<LoadMissRate>"	<< std::setprecision(3) << rq->data.cache.loadmissrate << "%</LoadMissRate>\n" \
+	<< "\t\t\t<LoadMissRate>"	<< rq->data.cache.loadmissrate << "%</LoadMissRate>\n" \
 	<< "\t\t\t<StoreHits>"		<< rq->data.cache.storehits << "</StoreHits>\n" \
 	<< "\t\t\t<StoreMisses>"	<< rq->data.cache.storemisses << "</StoreMisses>\n" \
 	<< "\t\t\t<StoreAccesses>"	<< rq->data.cache.storeaccess << "</StoreAccesses>\n" \
