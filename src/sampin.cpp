@@ -320,12 +320,12 @@ VOID Fini(INT32 code, VOID *v)
     rq->data.cache.loadaccess = il1.Accesses(il1.ACCESS_TYPE_LOAD);
     rq->data.cache.loadmissrate = (100.0 * il1.Misses(il1.ACCESS_TYPE_LOAD) / il1.Accesses(il1.ACCESS_TYPE_LOAD));
     rq->data.cache.storehits = il1.Hits(il1.ACCESS_TYPE_STORE);
-    rq->data.cache.storemisses = il1.Hits(il1.ACCESS_TYPE_STORE);
-    rq->data.cache.storeaccess = il1.Hits(il1.ACCESS_TYPE_STORE);
+    rq->data.cache.storemisses = il1.Misses(il1.ACCESS_TYPE_STORE);
+    rq->data.cache.storeaccess = il1.Accesses(il1.ACCESS_TYPE_STORE);
     rq->data.cache.storemissrate = (100.0 * il1.Misses(il1.ACCESS_TYPE_STORE) / il1.Accesses(il1.ACCESS_TYPE_STORE));
     rq->data.cache.totalhit = il1.Hits();
-    rq->data.cache.totalmiss = il1.Hits();
-    rq->data.cache.totalaccess = il1.Hits();
+    rq->data.cache.totalmiss = il1.Misses();
+    rq->data.cache.totalaccess = il1.Accesses();
     rq->data.cache.totalmissrate = (100.0 * il1.Misses() / il1.Accesses());
 
     writer->write_request(rq);
@@ -336,12 +336,12 @@ VOID Fini(INT32 code, VOID *v)
     rq->data.cache.loadaccess = dl1.Accesses(dl1.ACCESS_TYPE_LOAD);
     rq->data.cache.loadmissrate = (100.0 * dl1.Misses(dl1.ACCESS_TYPE_LOAD) / dl1.Accesses(dl1.ACCESS_TYPE_LOAD));
     rq->data.cache.storehits = dl1.Hits(dl1.ACCESS_TYPE_STORE);
-    rq->data.cache.storemisses = dl1.Hits(dl1.ACCESS_TYPE_STORE);
-    rq->data.cache.storeaccess = dl1.Hits(dl1.ACCESS_TYPE_STORE);
+    rq->data.cache.storemisses = dl1.Misses(dl1.ACCESS_TYPE_STORE);
+    rq->data.cache.storeaccess = dl1.Accesses(dl1.ACCESS_TYPE_STORE);
     rq->data.cache.storemissrate = (100.0 * dl1.Misses(dl1.ACCESS_TYPE_STORE) / dl1.Accesses(dl1.ACCESS_TYPE_STORE));
     rq->data.cache.totalhit = dl1.Hits();
-    rq->data.cache.totalmiss = dl1.Hits();
-    rq->data.cache.totalaccess = dl1.Hits();
+    rq->data.cache.totalmiss = dl1.Misses();
+    rq->data.cache.totalaccess = dl1.Accesses();
     rq->data.cache.totalmissrate = (100.0 * dl1.Misses() / dl1.Accesses());
 
     writer->write_request(rq);
@@ -352,12 +352,12 @@ VOID Fini(INT32 code, VOID *v)
     rq->data.cache.loadaccess = ul2.Accesses(ul2.ACCESS_TYPE_LOAD);
     rq->data.cache.loadmissrate = (100.0 * ul2.Misses(ul2.ACCESS_TYPE_LOAD) / ul2.Accesses(ul2.ACCESS_TYPE_LOAD));
     rq->data.cache.storehits = ul2.Hits(ul2.ACCESS_TYPE_STORE);
-    rq->data.cache.storemisses = ul2.Hits(ul2.ACCESS_TYPE_STORE);
-    rq->data.cache.storeaccess = ul2.Hits(ul2.ACCESS_TYPE_STORE);
+    rq->data.cache.storemisses = ul2.Misses(ul2.ACCESS_TYPE_STORE);
+    rq->data.cache.storeaccess = ul2.Accesses(ul2.ACCESS_TYPE_STORE);
     rq->data.cache.storemissrate = (100.0 * ul2.Misses(ul2.ACCESS_TYPE_STORE) / ul2.Accesses(ul2.ACCESS_TYPE_STORE));
     rq->data.cache.totalhit = ul2.Hits();
-    rq->data.cache.totalmiss = ul2.Hits();
-    rq->data.cache.totalaccess = ul2.Hits();
+    rq->data.cache.totalmiss = ul2.Misses();
+    rq->data.cache.totalaccess = ul2.Accesses();
     rq->data.cache.totalmissrate = (100.0 * ul2.Misses() / ul2.Accesses());
 
     writer->write_request(rq);
@@ -368,12 +368,12 @@ VOID Fini(INT32 code, VOID *v)
     rq->data.cache.loadaccess = ul3.Accesses(ul3.ACCESS_TYPE_LOAD);
     rq->data.cache.loadmissrate = (100.0 * ul3.Misses(ul3.ACCESS_TYPE_LOAD) / ul3.Accesses(ul3.ACCESS_TYPE_LOAD));
     rq->data.cache.storehits = ul3.Hits(ul3.ACCESS_TYPE_STORE);
-    rq->data.cache.storemisses = ul3.Hits(ul3.ACCESS_TYPE_STORE);
-    rq->data.cache.storeaccess = ul3.Hits(ul3.ACCESS_TYPE_STORE);
+    rq->data.cache.storemisses = ul3.Misses(ul3.ACCESS_TYPE_STORE);
+    rq->data.cache.storeaccess = ul3.Accesses(ul3.ACCESS_TYPE_STORE);
     rq->data.cache.storemissrate = (100.0 * ul3.Misses(ul3.ACCESS_TYPE_STORE) / ul3.Accesses(ul3.ACCESS_TYPE_STORE));
     rq->data.cache.totalhit = ul3.Hits();
-    rq->data.cache.totalmiss = ul3.Hits();
-    rq->data.cache.totalaccess = ul3.Hits();
+    rq->data.cache.totalmiss = ul3.Misses();
+    rq->data.cache.totalaccess = ul3.Accesses();
     rq->data.cache.totalmissrate = (100.0 * ul3.Misses() / ul3.Accesses());
 
     writer->write_request(rq);

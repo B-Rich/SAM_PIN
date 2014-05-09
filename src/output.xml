@@ -2361,111 +2361,111 @@
 	</Functions>
 
 	<Instructions>
-		<Instruction name="ADC" total="4"> 0 0 0 0 0 0 0 2 2 0 </Instruction>
-		<Instruction name="ADD" total="52244">450 1508 19297 1120 9256 1440 3055 6054 8050 2014 </Instruction>
-		<Instruction name="AND" total="8994">51 369 2606 340 2473 298 329 1179 932 417 </Instruction>
-		<Instruction name="BSF" total="1073">1 12 0 1 9 23 15 655 322 35 </Instruction>
+		<Instruction name="ADC" total="4"> 0 0 0 0 0 0 0 4 0 0 </Instruction>
+		<Instruction name="ADD" total="51917">446 1499 18984 1349 9542 1606 2732 6272 7824 1663 </Instruction>
+		<Instruction name="AND" total="8994">51 368 2565 361 2538 281 333 1193 888 416 </Instruction>
+		<Instruction name="BSF" total="1073">1 12 0 0 20 13 25 664 304 34 </Instruction>
 		<Instruction name="BSR" total="2">0 0 0 2 0 0 0 0 0 0 </Instruction>
-		<Instruction name="BT" total="254">0 0 151 19 15 14 19 16 7 13 </Instruction>
-		<Instruction name="CALL_NEAR" total="5592">46 427 1073 211 204 294 341 1315 1184 497 </Instruction>
-		<Instruction name="CDQE" total="177">1 4 0 2 3 12 13 65 68 9 </Instruction>
-		<Instruction name="CMOVB" total="787">1 119 309 42 49 51 48 44 45 79 </Instruction>
-		<Instruction name="CMOVBE" total="32">0 0 8 2 1 11 0 2 5 3 </Instruction>
-		<Instruction name="CMOVL" total="76">0 0 0 0 0 0 46 5 25 0 </Instruction>
-		<Instruction name="CMOVLE" total="8">0 0 0 0 0 0 4 2 2 0 </Instruction>
-		<Instruction name="CMOVNB" total="82">0 0 0 1 1 11 9 4 40 16 </Instruction>
-		<Instruction name="CMOVNBE" total="20">6 4 0 0 0 3 1 1 1 4 </Instruction>
-		<Instruction name="CMOVNL" total="14">0 0 0 0 0 3 2 3 6 0 </Instruction>
+		<Instruction name="BT" total="254">0 0 148 21 18 13 19 15 7 13 </Instruction>
+		<Instruction name="CALL_NEAR" total="5592">45 409 1064 222 276 261 350 1375 1099 491 </Instruction>
+		<Instruction name="CDQE" total="177">1 4 0 2 9 6 14 74 58 9 </Instruction>
+		<Instruction name="CMOVB" total="787">1 110 313 41 63 49 48 40 43 79 </Instruction>
+		<Instruction name="CMOVBE" total="32">0 0 4 6 6 6 0 4 3 3 </Instruction>
+		<Instruction name="CMOVL" total="76">0 0 0 0 0 0 46 10 20 0 </Instruction>
+		<Instruction name="CMOVLE" total="8">0 0 0 0 0 0 4 4 0 0 </Instruction>
+		<Instruction name="CMOVNB" total="82">0 0 0 1 2 11 8 4 40 16 </Instruction>
+		<Instruction name="CMOVNBE" total="20">6 4 0 0 0 4 0 1 1 4 </Instruction>
+		<Instruction name="CMOVNL" total="14">0 0 0 0 0 3 2 7 2 0 </Instruction>
 		<Instruction name="CMOVNLE" total="1">0 0 0 0 0 0 0 0 0 1 </Instruction>
-		<Instruction name="CMOVNS" total="11">0 0 0 0 1 0 1 2 2 5 </Instruction>
+		<Instruction name="CMOVNS" total="11">0 0 0 0 1 0 1 4 0 5 </Instruction>
 		<Instruction name="CMOVNZ" total="75">6 36 2 3 3 1 0 5 15 4 </Instruction>
-		<Instruction name="CMOVZ" total="490">1 7 168 18 19 15 36 84 112 30 </Instruction>
-		<Instruction name="CMP" total="58918">459 2616 18343 1311 6975 6120 5030 5711 9725 2628 </Instruction>
+		<Instruction name="CMOVZ" total="490">1 6 166 20 22 14 36 94 102 29 </Instruction>
+		<Instruction name="CMP" total="58591">454 2586 17993 1581 7316 8174 2830 5964 9444 2249 </Instruction>
 		<Instruction name="CMPSB" total="40">0 0 0 0 0 0 0 0 0 40 </Instruction>
-		<Instruction name="CMPXCHG" total="121">0 0 0 4 3 14 15 6 53 26 </Instruction>
+		<Instruction name="CMPXCHG" total="121">0 0 0 4 4 16 12 6 53 26 </Instruction>
 		<Instruction name="CPUID" total="19">0 0 3 16 0 0 0 0 0 0 </Instruction>
 		<Instruction name="CQO" total="1">0 0 0 1 0 0 0 0 0 0 </Instruction>
-		<Instruction name="DEC" total="173">10 66 0 3 2 14 13 3 38 24 </Instruction>
-		<Instruction name="DIV" total="299">0 0 176 21 17 17 21 19 10 18 </Instruction>
+		<Instruction name="DEC" total="173">10 66 0 3 3 14 12 3 38 24 </Instruction>
+		<Instruction name="DIV" total="299">0 0 173 23 21 17 20 17 10 18 </Instruction>
 		<Instruction name="IDIV" total="1">0 0 0 1 0 0 0 0 0 0 </Instruction>
-		<Instruction name="IMUL" total="153">2 4 11 11 1 4 1 56 52 11 </Instruction>
-		<Instruction name="INC" total="11088">21 591 4243 858 432 2034 1125 580 492 712 </Instruction>
-		<Instruction name="JB" total="4847">21 46 16 0 2213 1404 682 60 81 324 </Instruction>
-		<Instruction name="JBE" total="2798">79 513 581 5 11 255 218 107 941 88 </Instruction>
-		<Instruction name="JL" total="125">0 0 0 0 0 11 96 9 9 0 </Instruction>
-		<Instruction name="JLE" total="1550">0 37 162 23 19 623 290 31 80 285 </Instruction>
-		<Instruction name="JMP" total="8705">98 236 680 112 1030 2347 1405 1132 1346 319 </Instruction>
-		<Instruction name="JNB" total="1784">37 198 187 120 661 54 33 38 393 63 </Instruction>
-		<Instruction name="JNBE" total="8584">51 370 3625 87 1080 533 564 811 1283 180 </Instruction>
-		<Instruction name="JNL" total="88">0 0 0 0 0 0 58 10 11 9 </Instruction>
-		<Instruction name="JNLE" total="338">2 28 52 1 12 47 53 62 47 34 </Instruction>
-		<Instruction name="JNS" total="50">0 37 0 2 0 0 0 2 4 5 </Instruction>
-		<Instruction name="JNZ" total="46265">275 2314 15294 1895 4295 3739 3205 5249 7290 2709 </Instruction>
-		<Instruction name="JS" total="236">2 18 5 5 8 27 2 76 75 18 </Instruction>
-		<Instruction name="JZ" total="40895">342 1406 11599 1136 6996 1008 2498 5445 8343 2122 </Instruction>
-		<Instruction name="LEA" total="18254">194 1471 2843 471 5646 967 1294 2037 2633 698 </Instruction>
+		<Instruction name="IMUL" total="153">2 4 11 11 1 5 0 60 48 11 </Instruction>
+		<Instruction name="INC" total="11088">21 551 4207 884 532 2719 440 541 481 712 </Instruction>
+		<Instruction name="JB" total="4847">21 46 11 5 2213 2084 13 53 333 68 </Instruction>
+		<Instruction name="JBE" total="2798">79 513 508 78 24 358 109 111 930 88 </Instruction>
+		<Instruction name="JL" total="125">0 0 0 0 0 11 96 18 0 0 </Instruction>
+		<Instruction name="JLE" total="1550">0 37 159 25 25 850 59 43 323 29 </Instruction>
+		<Instruction name="JMP" total="8705">98 234 671 118 1076 3018 716 1223 1253 298 </Instruction>
+		<Instruction name="JNB" total="1784">36 199 173 133 675 43 32 42 389 62 </Instruction>
+		<Instruction name="JNBE" total="8584">51 370 3607 101 1104 697 396 846 1233 179 </Instruction>
+		<Instruction name="JNL" total="88">0 0 0 0 0 0 58 20 10 0 </Instruction>
+		<Instruction name="JNLE" total="338">2 28 50 3 23 40 49 78 50 15 </Instruction>
+		<Instruction name="JNS" total="50">0 37 0 2 0 0 0 4 2 5 </Instruction>
+		<Instruction name="JNZ" total="45938">268 2253 14982 2106 4695 4622 2187 5344 6868 2613 </Instruction>
+		<Instruction name="JS" total="236">1 19 4 6 17 18 2 89 62 18 </Instruction>
+		<Instruction name="JZ" total="40570">340 1385 11455 1189 7280 903 2492 5726 7776 2024 </Instruction>
+		<Instruction name="LEA" total="18254">192 1470 2794 504 5777 1185 997 2164 2491 680 </Instruction>
 		<Instruction name="LEAVE" total="3">0 0 0 0 0 0 0 0 0 3 </Instruction>
-		<Instruction name="MOV" total="141984">1179 5583 54745 5911 14414 7021 9691 16383 17998 9059 </Instruction>
+		<Instruction name="MOV" total="141659">1168 5435 53981 6416 15979 6913 9080 17013 16981 8693 </Instruction>
 		<Instruction name="MOVAPS" total="19">0 0 0 0 0 0 1 1 0 17 </Instruction>
-		<Instruction name="MOVD" total="62">1 12 0 1 5 13 1 9 11 9 </Instruction>
-		<Instruction name="MOVDQA" total="1259">3 18 0 1 16 399 44 557 83 138 </Instruction>
-		<Instruction name="MOVDQU" total="1299">4 21 0 2 15 304 26 620 193 114 </Instruction>
-		<Instruction name="MOVHPD" total="244">0 0 0 0 0 2 4 44 192 2 </Instruction>
-		<Instruction name="MOVLPD" total="244">0 0 0 0 0 2 4 44 192 2 </Instruction>
+		<Instruction name="MOVD" total="62">1 12 0 1 10 9 0 13 7 9 </Instruction>
+		<Instruction name="MOVDQA" total="1259">3 18 0 1 21 422 16 565 75 138 </Instruction>
+		<Instruction name="MOVDQU" total="1299">4 21 0 1 25 303 27 627 178 113 </Instruction>
+		<Instruction name="MOVHPD" total="244">0 0 0 0 2 0 8 42 190 2 </Instruction>
+		<Instruction name="MOVLPD" total="244">0 0 0 0 2 0 8 42 190 2 </Instruction>
 		<Instruction name="MOVQ" total="4">0 0 0 0 0 0 0 0 0 4 </Instruction>
-		<Instruction name="MOVSX" total="1091">0 611 0 0 2 9 6 203 197 63 </Instruction>
-		<Instruction name="MOVSXD" total="1569">35 57 179 12 11 206 355 122 552 40 </Instruction>
-		<Instruction name="MOVZX" total="15407">43 407 3803 410 4709 1009 1428 1762 1444 392 </Instruction>
-		<Instruction name="MUL" total="12">2 0 4 1 0 0 0 2 3 0 </Instruction>
-		<Instruction name="NEG" total="143">23 66 26 2 0 4 4 4 10 4 </Instruction>
-		<Instruction name="NOP" total="1578">15 85 593 88 65 81 184 121 247 99 </Instruction>
-		<Instruction name="NOT" total="83">3 12 0 1 1 5 52 0 6 3 </Instruction>
-		<Instruction name="OR" total="1129">26 76 391 36 13 77 53 152 200 105 </Instruction>
+		<Instruction name="MOVSX" total="1091">0 611 0 0 7 4 6 228 192 43 </Instruction>
+		<Instruction name="MOVSXD" total="1569">35 57 176 15 19 319 237 162 509 40 </Instruction>
+		<Instruction name="MOVZX" total="15407">42 406 3758 441 4818 1161 1214 1860 1317 390 </Instruction>
+		<Instruction name="MUL" total="12">2 0 4 1 0 0 0 5 0 0 </Instruction>
+		<Instruction name="NEG" total="143">23 66 25 3 0 4 4 4 10 4 </Instruction>
+		<Instruction name="NOP" total="1578">15 84 582 95 87 70 190 131 227 97 </Instruction>
+		<Instruction name="NOT" total="83">3 12 0 1 3 55 0 0 6 3 </Instruction>
+		<Instruction name="OR" total="1129">26 76 383 44 27 69 47 171 181 105 </Instruction>
 		<Instruction name="PALIGNR" total="6">0 0 0 0 0 0 0 1 5 0 </Instruction>
-		<Instruction name="PCMPEQB" total="1709">8 42 0 3 19 59 51 859 560 108 </Instruction>
+		<Instruction name="PCMPEQB" total="1709">8 42 0 2 39 40 63 885 523 107 </Instruction>
 		<Instruction name="PMINUB" total="27">0 0 0 0 0 0 12 0 0 15 </Instruction>
-		<Instruction name="PMOVMSKB" total="1468">4 21 0 3 14 42 49 808 423 104 </Instruction>
-		<Instruction name="POP" total="10169">54 426 3067 464 426 682 606 1502 2098 844 </Instruction>
-		<Instruction name="POR" total="65">4 21 0 0 3 15 0 7 12 3 </Instruction>
-		<Instruction name="PSHUFD" total="66">1 12 0 1 5 13 1 9 11 13 </Instruction>
-		<Instruction name="PSLLDQ" total="45">0 0 0 0 2 2 0 18 23 0 </Instruction>
+		<Instruction name="PMOVMSKB" total="1468">4 21 0 2 28 29 59 829 393 103 </Instruction>
+		<Instruction name="POP" total="10169">54 416 3012 498 592 588 607 1634 1938 830 </Instruction>
+		<Instruction name="POR" total="65">4 21 0 0 8 10 0 11 8 3 </Instruction>
+		<Instruction name="PSHUFD" total="66">1 12 0 1 10 9 0 13 7 13 </Instruction>
+		<Instruction name="PSLLDQ" total="45">0 0 0 0 2 2 0 20 21 0 </Instruction>
 		<Instruction name="PSRLDQ" total="2">0 0 0 0 0 1 0 0 1 0 </Instruction>
-		<Instruction name="PSUBB" total="178">0 0 0 0 2 3 2 44 126 1 </Instruction>
-		<Instruction name="PUNPCKLBW" total="70">1 12 0 1 5 13 1 9 11 17 </Instruction>
-		<Instruction name="PUNPCKLWD" total="62">1 12 0 1 5 13 1 9 11 9 </Instruction>
-		<Instruction name="PUSH" total="10367">86 429 3050 469 482 714 633 1526 2108 870 </Instruction>
-		<Instruction name="PXOR" total="3524">1 12 0 5 22 54 57 2423 855 95 </Instruction>
-		<Instruction name="RDTSC" total="19">13 1 2 3 0 0 0 0 0 0 </Instruction>
-		<Instruction name="RET_NEAR" total="5585">38 427 1078 211 198 294 344 1316 1184 495 </Instruction>
+		<Instruction name="PSUBB" total="178">0 0 0 0 3 2 4 45 123 1 </Instruction>
+		<Instruction name="PUNPCKLBW" total="70">1 12 0 1 10 9 0 13 7 17 </Instruction>
+		<Instruction name="PUNPCKLWD" total="62">1 12 0 1 10 9 0 13 7 9 </Instruction>
+		<Instruction name="PUSH" total="10367">80 414 3012 495 660 611 633 1649 1950 863 </Instruction>
+		<Instruction name="PXOR" total="3524">1 12 0 1 48 32 83 2447 809 91 </Instruction>
+		<Instruction name="RDTSC" total="19">13 1 1 4 0 0 0 0 0 0 </Instruction>
+		<Instruction name="RET_NEAR" total="5585">38 412 1064 222 270 261 354 1378 1098 488 </Instruction>
 		<Instruction name="ROL" total="87">3 24 0 60 0 0 0 0 0 0 </Instruction>
-		<Instruction name="ROR" total="21">0 0 0 0 0 2 2 0 12 5 </Instruction>
-		<Instruction name="SAR" total="603">2 53 198 32 23 25 36 130 80 24 </Instruction>
-		<Instruction name="SBB" total="18">3 4 0 1 0 0 0 1 0 9 </Instruction>
-		<Instruction name="SCASB" total="467">0 0 0 0 0 64 364 0 19 20 </Instruction>
-		<Instruction name="SETBE" total="175">0 0 166 9 0 0 0 0 0 0 </Instruction>
-		<Instruction name="SETLE" total="4">0 0 0 0 0 0 0 2 2 0 </Instruction>
+		<Instruction name="ROR" total="21">0 0 0 0 0 3 1 0 12 5 </Instruction>
+		<Instruction name="SAR" total="603">2 53 193 36 28 22 36 137 72 24 </Instruction>
+		<Instruction name="SBB" total="18">3 4 0 1 0 0 1 0 0 9 </Instruction>
+		<Instruction name="SCASB" total="467">0 0 0 0 32 396 0 0 19 20 </Instruction>
+		<Instruction name="SETBE" total="175">0 0 163 12 0 0 0 0 0 0 </Instruction>
+		<Instruction name="SETLE" total="4">0 0 0 0 0 0 0 4 0 0 </Instruction>
 		<Instruction name="SETNB" total="1">0 0 0 0 1 0 0 0 0 0 </Instruction>
-		<Instruction name="SETNBE" total="49">0 0 0 0 1 8 2 3 29 6 </Instruction>
-		<Instruction name="SETNL" total="4">0 0 0 0 0 0 0 1 3 0 </Instruction>
-		<Instruction name="SETNZ" total="104">1 4 18 1 2 13 10 7 33 15 </Instruction>
-		<Instruction name="SETZ" total="917">2 1 639 45 18 23 24 63 80 22 </Instruction>
-		<Instruction name="SHL" total="4420">48 166 2145 238 153 368 400 432 290 180 </Instruction>
-		<Instruction name="SHR" total="5076">14 64 2689 407 229 269 304 305 462 333 </Instruction>
-		<Instruction name="STOSB" total="7988">0 7832 112 0 0 0 0 0 0 44 </Instruction>
-		<Instruction name="STOSQ" total="461">0 0 328 24 0 9 18 9 9 64 </Instruction>
-		<Instruction name="SUB" total="5274">129 571 825 150 296 338 541 666 1101 657 </Instruction>
-		<Instruction name="SYSCALL" total="100">2 36 9 8 4 8 5 1 7 20 </Instruction>
-		<Instruction name="TEST" total="48233">322 2025 13681 1899 8154 1565 2687 6084 8663 3153 </Instruction>
-		<Instruction name="XCHG" total="99">0 0 0 10 3 0 0 33 43 10 </Instruction>
+		<Instruction name="SETNBE" total="49">0 0 0 0 2 8 1 3 29 6 </Instruction>
+		<Instruction name="SETNL" total="4">0 0 0 0 0 0 0 2 2 0 </Instruction>
+		<Instruction name="SETNZ" total="104">1 4 18 1 3 14 8 7 33 15 </Instruction>
+		<Instruction name="SETZ" total="917">2 1 626 57 22 22 24 67 74 22 </Instruction>
+		<Instruction name="SHL" total="4420">47 166 2125 253 188 461 284 451 265 180 </Instruction>
+		<Instruction name="SHR" total="5076">14 64 2654 421 286 261 294 296 453 333 </Instruction>
+		<Instruction name="STOSB" total="7988">0 7832 0 112 0 0 0 0 0 44 </Instruction>
+		<Instruction name="STOSQ" total="461">0 0 328 24 0 9 18 18 0 64 </Instruction>
+		<Instruction name="SUB" total="5274">128 565 811 161 376 399 427 755 1253 399 </Instruction>
+		<Instruction name="SYSCALL" total="100">2 36 8 9 4 8 5 1 7 20 </Instruction>
+		<Instruction name="TEST" total="47908">316 1974 13456 2017 8564 1428 2682 6329 8347 2795 </Instruction>
+		<Instruction name="XCHG" total="99">0 0 0 10 3 0 0 39 37 10 </Instruction>
 		<Instruction name="XGETBV" total="2">0 0 1 1 0 0 0 0 0 0 </Instruction>
-		<Instruction name="XOR" total="5179">45 209 1642 311 166 202 729 707 753 415 </Instruction>
+		<Instruction name="XOR" total="5179">45 200 1617 330 223 185 727 807 650 395 </Instruction>
 	</Instructions>
 	<Caches>
 		<Cache name="L1 Instruction Cache">
-			<LoadHits>550487</LoadHits>
+			<LoadHits>548531</LoadHits>
 			<LoadMisses>3555</LoadMisses>
-			<LoadAccesses>554042</LoadAccesses>
-			<LoadMissRate>0.642%</LoadMissRate>
+			<LoadAccesses>552086</LoadAccesses>
+			<LoadMissRate>0.644%</LoadMissRate>
 			<StoreHits>0</StoreHits>
 			<StoreMisses>0</StoreMisses>
 			<StoreAccesses>0</StoreAccesses>
@@ -2476,46 +2476,46 @@
 			<TotalMissRate>-nan%</TotalMissRate>
 		</Cache>
 		<Cache name="L1 Data Cache">
-			<LoadHits>131577</LoadHits>
-			<LoadMisses>10132</LoadMisses>
-			<LoadAccesses>141709</LoadAccesses>
-			<LoadMissRate>7.150%</LoadMissRate>
-			<StoreHits>39518</StoreHits>
-			<StoreMisses>39518</StoreMisses>
-			<StoreAccesses>39518</StoreAccesses>
-			<StoreMissRate>31.754%</StoreMissRate>
-			<TotalHits>39518</TotalHits>
-			<TotalMisses>39518</TotalMisses>
-			<TotalAccesses>39518</TotalAccesses>
-			<TotalMissRate>31.754%</TotalMissRate>
+			<LoadHits>130903</LoadHits>
+			<LoadMisses>10153</LoadMisses>
+			<LoadAccesses>141056</LoadAccesses>
+			<LoadMissRate>7.198%</LoadMissRate>
+			<StoreHits>39494</StoreHits>
+			<StoreMisses>18411</StoreMisses>
+			<StoreAccesses>57905</StoreAccesses>
+			<StoreMissRate>31.795%</StoreMissRate>
+			<TotalHits>39494</TotalHits>
+			<TotalMisses>18411</TotalMisses>
+			<TotalAccesses>57905</TotalAccesses>
+			<TotalMissRate>31.795%</TotalMissRate>
 		</Cache>
 		<Cache name="L2 Unified Cache">
-			<LoadHits>7974</LoadHits>
-			<LoadMisses>5713</LoadMisses>
-			<LoadAccesses>13687</LoadAccesses>
-			<LoadMissRate>41.740%</LoadMissRate>
-			<StoreHits>17024</StoreHits>
-			<StoreMisses>17024</StoreMisses>
-			<StoreAccesses>17024</StoreAccesses>
-			<StoreMissRate>7.413%</StoreMissRate>
-			<TotalHits>17024</TotalHits>
-			<TotalMisses>17024</TotalMisses>
-			<TotalAccesses>17024</TotalAccesses>
-			<TotalMissRate>7.413%</TotalMissRate>
+			<LoadHits>7993</LoadHits>
+			<LoadMisses>5715</LoadMisses>
+			<LoadAccesses>13708</LoadAccesses>
+			<LoadMissRate>41.691%</LoadMissRate>
+			<StoreHits>17048</StoreHits>
+			<StoreMisses>1363</StoreMisses>
+			<StoreAccesses>18411</StoreAccesses>
+			<StoreMissRate>7.403%</StoreMissRate>
+			<TotalHits>17048</TotalHits>
+			<TotalMisses>1363</TotalMisses>
+			<TotalAccesses>18411</TotalAccesses>
+			<TotalMissRate>7.403%</TotalMissRate>
 		</Cache>
 		<Cache name="L3 Unified Cache">
-			<LoadHits>161</LoadHits>
-			<LoadMisses>5552</LoadMisses>
-			<LoadAccesses>5713</LoadAccesses>
-			<LoadMissRate>97.182%</LoadMissRate>
-			<StoreHits>2</StoreHits>
-			<StoreMisses>2</StoreMisses>
-			<StoreAccesses>2</StoreAccesses>
-			<StoreMissRate>99.853%</StoreMissRate>
-			<TotalHits>2</TotalHits>
-			<TotalMisses>2</TotalMisses>
-			<TotalAccesses>2</TotalAccesses>
-			<TotalMissRate>99.853%</TotalMissRate>
+			<LoadHits>144</LoadHits>
+			<LoadMisses>5571</LoadMisses>
+			<LoadAccesses>5715</LoadAccesses>
+			<LoadMissRate>97.480%</LoadMissRate>
+			<StoreHits>1</StoreHits>
+			<StoreMisses>1362</StoreMisses>
+			<StoreAccesses>1363</StoreAccesses>
+			<StoreMissRate>99.927%</StoreMissRate>
+			<TotalHits>1</TotalHits>
+			<TotalMisses>1362</TotalMisses>
+			<TotalAccesses>1363</TotalAccesses>
+			<TotalMissRate>99.927%</TotalMissRate>
 		</Cache>
 	</Caches>
 </SAM_PIN_INFO>
