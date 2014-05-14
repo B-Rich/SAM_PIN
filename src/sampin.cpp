@@ -46,6 +46,7 @@ typedef UINT64 CACHE_STATS; // type of cache hit/miss counters
 
 
 ofstream OutFile;
+string image_output;
 struct Instruction opCount[1200];
 
 clock_t calltime;
@@ -212,10 +213,9 @@ KNOB<string> KnobOutputFile(KNOB_MODE_WRITEONCE, "pintool",
 
 VOID ImageLoad(IMG img, void *v)
 {
-    fstream output;
-    output.open("output.xml", std::fstream::out);
+    std::stringstream output;
 
-    output << "\t<Functions>\n";
+    output << "Functions>\n";
 
     for( SYM sym = IMG_RegsymHead(img); SYM_Valid(sym); sym = SYM_Next(sym) )
     {
@@ -227,10 +227,10 @@ VOID ImageLoad(IMG img, void *v)
             << "\t\t</Function>\n";
     }
 
-    output << "\t</Functions>\n";
-    output << endl;
+    output << "\t</Functions";
 
-    output.close();
+    image_output = output.str();
+
 }
 
 // This function is called when the application exits
@@ -379,6 +379,8 @@ VOID Fini(INT32 code, VOID *v)
     writer->write_request(rq);
 
     writer->write_tag("\t", "/Caches");
+
+    writer->write_tag("\n", image_output);
 
 
     // Write to a file since cout and cerr maybe closed by the application
