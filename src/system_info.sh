@@ -21,5 +21,5 @@ cpumodel=`eval $cpucmd`
 cpumodel=${cpumodel#*: }
 cpuxml="\t<CPUModel>$cpumodel</CPUModel>"
 
-echo "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<SAM_PIN_INFO>\n\t<SystemInformation>\n\t\t$sysname\n\t\t$memxml\n\t\t$cpuxml\n\t</SystemInformation>" | cat	- output.xml > temp && mv temp output.xml
+echo -e "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<SAM_PIN_INFO>\n\t<SystemInformation>\n\t\t$sysname\n\t\t$memxml\n\t\t$cpuxml\n\t</SystemInformation>" | cat	- output.xml > temp && mv temp output.xml
 echo "</SAM_PIN_INFO>" >> output.xml
