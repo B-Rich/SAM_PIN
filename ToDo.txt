@@ -1,6 +1,3 @@
-- Time Binning for Instructions
-- Host Info
-- Add XML info version at top (Easy)
 - Application Name and info (need this for time binning since it has total time elapsed)
 - Check out memory stuff in Pin documentation
 - Ask about nodes
