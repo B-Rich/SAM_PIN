@@ -42,7 +42,7 @@ END_LEGAL */
 
 typedef UINT64 CACHE_STATS; // type of cache hit/miss counters
 
-#include "pin_cache.H"
+#include "sampin_cache.H"
 
 
 ofstream OutFile;
