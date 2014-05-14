@@ -6,11 +6,14 @@ export PIN_ROOT=/your/path/here/pin-2.13-62732-gcc.4.4.7-linux
 
 -- Compile
 
-make obj-intel64/inscount.so
+make
 
 
 -- Run
 
+make run
 
-pin -t obj-intel64/inscount.so -o inscount.log -- /bin/ls
+-or-
+
+pin -t obj-intel64/sampin.so -o sampin.log -- /path/to/program/here
 
